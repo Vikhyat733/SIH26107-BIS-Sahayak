@@ -1,0 +1,52 @@
+{
+  "certificate_id": "MTC-2026-TMT-8841",
+  "issue_date": "2026-09-15",
+  "manufacturer": {
+    "name": "Tata Steel Limited - Jamshedpur Works",
+    "cml_license_number": "CM/L-8400192",
+    "plant_location": "Jamshedpur, Jharkhand - 831001",
+    "validity_status": "Operative"
+  },
+  "product_details": {
+    "standard": "IS 1786:2008",
+    "product_name": "High Strength Deformed TMT Steel Bars",
+    "grade": "Fe 500D",
+    "nominal_diameter_mm": 16,
+    "heat_number": "HT-2026-9812",
+    "cast_number": "CAST-44810",
+    "lot_weight_tonnes": 38.5,
+    "bundle_tags": ["TAG-16-01", "TAG-16-02", "TAG-16-03"]
+  },
+  "chemical_composition": {
+    "carbon": 0.21,
+    "sulfur": 0.032,
+    "phosphorus": 0.034,
+    "sulfur_plus_phosphorus": 0.066,
+    "manganese": 0.65,
+    "silicon": 0.22,
+    "chromium": 0.03,
+    "molybdenum": 0.01,
+    "vanadium": 0.01,
+    "nickel": 0.02,
+    "copper": 0.03
+  },
+  "mechanical_properties": {
+    "yield_stress": 535.0,
+    "tensile_strength": 615.0,
+    "ts_ys_ratio": 1.1495,
+    "elongation": 18.2,
+    "total_elongation_at_max_force": 6.8
+  },
+  "physical_properties": {
+    "mass_per_meter": 1.572,
+    "nominal_mass": 1.580,
+    "mass_variation_pct": -0.506,
+    "bend_test": "Satisfactory (No surface cracks at 180° mandrel bend)",
+    "rebend_test": "Satisfactory (No transverse fissures after 135° bend & 157.5° reverse bend in boiling water)"
+  },
+  "qa_inspector": {
+    "name": "Er. R. K. Sharma",
+    "designation": "Head of Quality Assurance & BIS Approved In-house Auditor",
+    "digital_signature_hash": "SHA256:4a8c9b91e2026fe500dpassverified8841"
+  }
+}

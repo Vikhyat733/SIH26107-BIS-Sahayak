@@ -1,0 +1,52 @@
+{
+  "certificate_id": "MTC-2026-TMT-9902-REJECTED",
+  "issue_date": "2026-09-20",
+  "manufacturer": {
+    "name": "Apex Secondary Re-Rollers Private Limited",
+    "cml_license_number": "CM/L-6109923",
+    "plant_location": "Raipur Industrial Area, Chhattisgarh - 492001",
+    "validity_status": "Under Surveillance"
+  },
+  "product_details": {
+    "standard": "IS 1786:2008",
+    "product_name": "High Strength Deformed TMT Steel Bars",
+    "grade": "Fe 500D",
+    "nominal_diameter_mm": 12,
+    "heat_number": "HT-2026-REJ-04",
+    "cast_number": "CAST-88219",
+    "lot_weight_tonnes": 42.0,
+    "bundle_tags": ["TAG-12-FAIL-A", "TAG-12-FAIL-B"]
+  },
+  "chemical_composition": {
+    "carbon": 0.28,
+    "sulfur": 0.048,
+    "phosphorus": 0.038,
+    "sulfur_plus_phosphorus": 0.086,
+    "manganese": 0.58,
+    "silicon": 0.20,
+    "chromium": 0.02,
+    "molybdenum": 0.01,
+    "vanadium": 0.01,
+    "nickel": 0.02,
+    "copper": 0.02
+  },
+  "mechanical_properties": {
+    "yield_stress": 505.0,
+    "tensile_strength": 545.4,
+    "ts_ys_ratio": 1.08,
+    "elongation": 15.0,
+    "total_elongation_at_max_force": 4.2
+  },
+  "physical_properties": {
+    "mass_per_meter": 0.880,
+    "nominal_mass": 0.888,
+    "mass_variation_pct": -0.90,
+    "bend_test": "Satisfactory (No visible fissures)",
+    "rebend_test": "Incipient surface hairline micro-cracking observed on reverse bend"
+  },
+  "qa_inspector": {
+    "name": "Er. S. N. Verma",
+    "designation": "Quality Control Supervisor",
+    "digital_signature_hash": "SHA256:rejected_audit_alert_9902_violation"
+  }
+}

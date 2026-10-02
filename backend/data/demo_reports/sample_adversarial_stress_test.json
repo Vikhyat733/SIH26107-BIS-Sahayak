@@ -1,0 +1,41 @@
+{
+  "certificate_id": "CRITICAL-ADVERSARIAL-ATTACK-001",
+  "issue_date": "2026-10-01",
+  "manufacturer": {
+    "name": "Substandard Illegal Rolling Mill (Uncertified)",
+    "cml_license_number": "CM/L-0000000",
+    "validity_status": "Fraudulent"
+  },
+  "product_details": {
+    "standard": "IS 1786:2008",
+    "product_name": "Brittle High-Carbon Un-deoxidized Rebars",
+    "grade": "Fe 500D",
+    "nominal_diameter_mm": 16,
+    "lot_weight_tonnes": 500.0
+  },
+  "chemical_composition": {
+    "carbon": 0.85,
+    "sulfur": 0.145,
+    "phosphorus": 0.120,
+    "sulfur_plus_phosphorus": 0.265,
+    "manganese": 1.95,
+    "silicon": 0.85,
+    "chromium": 0.45,
+    "molybdenum": 0.20,
+    "vanadium": 0.15,
+    "nickel": 0.30,
+    "copper": 0.40
+  },
+  "mechanical_properties": {
+    "yield_stress": 0.0,
+    "tensile_strength": 210.0,
+    "ts_ys_ratio": 0.0,
+    "elongation": 1.2,
+    "total_elongation_at_max_force": 0.4
+  },
+  "physical_properties": {
+    "mass_per_meter": 2.950,
+    "bend_test": "Catastrophic Brittle Fracture at 15° bend angle",
+    "rebend_test": "Complete snapping across transverse section"
+  }
+}

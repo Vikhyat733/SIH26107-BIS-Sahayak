@@ -1,0 +1,131 @@
+{
+  "standard_code": "IS 10500:2012",
+  "title": "Drinking Water — Specification (Second Revision)",
+  "category": "Chemical & Environmental Engineering",
+  "sti_reference": "STI/10500/Doc-1",
+  "parameters": {
+    "ph_value": {
+      "name": "pH Value",
+      "acceptable_limit_min": 6.5,
+      "acceptable_limit_max": 8.5,
+      "permissible_limit_min": 6.5,
+      "permissible_limit_max": 8.5,
+      "unit": "pH units",
+      "clause": "IS 10500 Table 1 Sl 1",
+      "test_method": "IS 3025 (Part 11)"
+    },
+    "turbidity": {
+      "name": "Turbidity",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 1.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 5.0,
+      "unit": "NTU",
+      "clause": "IS 10500 Table 1 Sl 3",
+      "test_method": "IS 3025 (Part 10)"
+    },
+    "total_dissolved_solids": {
+      "name": "Total Dissolved Solids (TDS)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 500.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 2000.0,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 1 Sl 4",
+      "test_method": "IS 3025 (Part 16)"
+    },
+    "total_hardness": {
+      "name": "Total Hardness (as CaCO3)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 200.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 600.0,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 2 Sl 2",
+      "test_method": "IS 3025 (Part 21)"
+    },
+    "chlorides": {
+      "name": "Chlorides (as Cl)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 250.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 1000.0,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 2 Sl 5",
+      "test_method": "IS 3025 (Part 32)"
+    },
+    "iron": {
+      "name": "Iron (as Fe)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 1.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 1.0,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 2 Sl 3",
+      "test_method": "IS 3025 (Part 53)"
+    },
+    "fluoride": {
+      "name": "Fluoride (as F)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 1.0,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 1.5,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 2 Sl 13",
+      "test_method": "IS 3025 (Part 60)"
+    },
+    "lead": {
+      "name": "Lead (as Pb)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 0.01,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 0.01,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 3 Sl 2",
+      "test_method": "IS 3025 (Part 47)"
+    },
+    "arsenic": {
+      "name": "Arsenic (as As)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 0.01,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 0.05,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 3 Sl 5",
+      "test_method": "IS 3025 (Part 37)"
+    },
+    "cadmium": {
+      "name": "Cadmium (as Cd)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 0.003,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 0.003,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 3 Sl 3",
+      "test_method": "IS 3025 (Part 41)"
+    },
+    "mercury": {
+      "name": "Mercury (as Hg)",
+      "acceptable_limit_min": 0.0,
+      "acceptable_limit_max": 0.001,
+      "permissible_limit_min": 0.0,
+      "permissible_limit_max": 0.001,
+      "unit": "mg/l",
+      "clause": "IS 10500 Table 3 Sl 7",
+      "test_method": "IS 3025 (Part 48)"
+    }
+  },
+  "sti_rules": {
+    "daily_raw_water_testing": "pH, Turbidity, Residual Chlorine (every 2 hours)",
+    "daily_treated_water_testing": "Complete physical and chemical profile (1 test per batch / daily)",
+    "microbiological_testing": "E. coli & Coliforms (1 test per daily batch)",
+    "toxic_metals_testing": "Full ICP-MS / AAS screening (Monthly composite sample)"
+  },
+  "required_lab_equipment": [
+    { "name": "Digital pH Meter with buffer calibration standards", "purpose": "pH determination (IS 3025 Part 11)", "calibration_interval_months": 3 },
+    { "name": "Nephelometric Turbidity Meter (0-1000 NTU)", "purpose": "Turbidity measurement (IS 3025 Part 10)", "calibration_interval_months": 6 },
+    { "name": "Atomic Absorption Spectrophotometer (AAS) / ICP-OES", "purpose": "Heavy Metals (Pb, As, Cd, Hg, Fe)", "calibration_interval_months": 12 },
+    { "name": "Digital TDS & Conductivity Meter", "purpose": "Total Dissolved Solids (IS 3025 Part 16)", "calibration_interval_months": 6 },
+    { "name": "Autoclave & Laminar Air Flow (Microbiology Lab)", "purpose": "E. coli and Total Coliform analysis (IS 15185)", "calibration_interval_months": 12 }
+  ]
+}

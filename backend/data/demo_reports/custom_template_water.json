@@ -1,0 +1,19 @@
+{
+  "certificate_id": "CUSTOM-WATER-LAB-001",
+  "issue_date": "2026-10-01",
+  "sample_id": "WATER-BATCH-99",
+  "standard": "IS 10500:2012",
+  "parameters": {
+    "ph_value": 7.2,
+    "turbidity": 0.5,
+    "total_dissolved_solids": 320.0,
+    "total_hardness": 180.0,
+    "chlorides": 120.0,
+    "iron": 0.2,
+    "fluoride": 0.8,
+    "lead": 0.005,
+    "arsenic": 0.003,
+    "cadmium": 0.001,
+    "mercury": 0.0005
+  }
+}

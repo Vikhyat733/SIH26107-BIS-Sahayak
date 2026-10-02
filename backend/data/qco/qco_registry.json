@@ -1,0 +1,115 @@
+[
+  {
+    "qco_id": "QCO-STEEL-2020",
+    "title": "Steel and Steel Products (Quality Control) Order, 2020",
+    "ministry": "Ministry of Steel, Government of India",
+    "gazette_notification_number": "S.O. 1612(E)",
+    "notification_date": "2020-05-12",
+    "enforcement_date": "2020-11-12",
+    "status": "Active & Mandatory",
+    "applicable_standards": [
+      { "standard": "IS 1786:2008", "product": "High strength deformed steel bars and wires for concrete reinforcement" },
+      { "standard": "IS 2062:2011", "product": "Hot rolled medium and high tensile structural steel" },
+      { "standard": "IS 2830:2012", "product": "Carbon steel cast billet ingots, billets, blooms and slabs for re-rolling" },
+      { "standard": "IS 432 (Part 1):1982", "product": "Mild steel and medium tensile steel bars and hard-drawn steel wire" }
+    ],
+    "scheme": "Scheme-I (ISI Mark Certification Scheme)",
+    "msme_exemption_rules": {
+      "micro_enterprises": "No exemption from compliance; 6-month initial transition buffer expired. Testing subsidies under PTQAP available.",
+      "small_enterprises": "Mandatory compliance; fast-track simplified inspection procedure applicable under BIS Guidelines.",
+      "medium_enterprises": "Standard Scheme-I audit and conformity assessment mandatory."
+    },
+    "penal_provisions": "Section 29 of BIS Act, 2016 — Imprisonment up to 2 years or fine not less than ₹2,00,000 or up to 10 times value of goods.",
+    "customs_tariff_hs_codes": ["72142090", "72149990", "72131000", "72139190"]
+  },
+  {
+    "qco_id": "QCO-FOOTWEAR-2024",
+    "title": "Footwear made from Leather and other materials (Quality Control) Order, 2024",
+    "ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "gazette_notification_number": "S.O. 1120(E)",
+    "notification_date": "2024-03-04",
+    "enforcement_date": "2024-08-01",
+    "status": "Active & Mandatory",
+    "applicable_standards": [
+      { "standard": "IS 15844 (Part 1):2021", "product": "Sports footwear - General purpose" },
+      { "standard": "IS 15844 (Part 2):2023", "product": "Performance sports footwear" },
+      { "standard": "IS 3705:2021", "product": "Leather safety footwear having direct vulcanized rubber sole" },
+      { "standard": "IS 15298 (Part 2):2016", "product": "Safety footwear with toecap" }
+    ],
+    "scheme": "Scheme-I (ISI Mark)",
+    "msme_exemption_rules": {
+      "micro_enterprises": "Relaxation given up to 1st January 2025 with 80% concession on testing charges under BIS SME incentive scheme.",
+      "small_enterprises": "Relaxation given up to 1st July 2024 with 50% concession on application fee.",
+      "medium_enterprises": "Enforced immediately from 1st August 2024."
+    },
+    "penal_provisions": "Seizure of non-certified stock at ports and retail outlets under Section 17 & 29 of BIS Act, 2016.",
+    "customs_tariff_hs_codes": ["6402", "6403", "6404", "6405"]
+  },
+  {
+    "qco_id": "QCO-WATER-BOTTLES-2023",
+    "title": "Potable Water Bottles (Quality Control) Order, 2023",
+    "ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "gazette_notification_number": "S.O. 3125(E)",
+    "notification_date": "2023-07-14",
+    "enforcement_date": "2024-01-14",
+    "status": "Active & Mandatory",
+    "applicable_standards": [
+      { "standard": "IS 17803:2022", "product": "Stainless Steel Cookware and Utensils" },
+      { "standard": "IS 17526:2021", "product": "Commercial Beverage Coolers" },
+      { "standard": "IS 14543:2016", "product": "Packaged Drinking Water (Other than Packaged Natural Mineral Water)" }
+    ],
+    "scheme": "Scheme-I (ISI Mark)",
+    "msme_exemption_rules": {
+      "micro_enterprises": "Extended implementation timeline by additional 6 months upon filing self-declaration on Manakonline.",
+      "small_enterprises": "Extended implementation timeline by additional 3 months.",
+      "medium_enterprises": "Mandatory with full factory audit."
+    },
+    "penal_provisions": "Prohibition of manufacture, import, distribution, sale, or lease without ISI Standard Mark.",
+    "customs_tariff_hs_codes": ["39241090", "73239390", "76151090"]
+  },
+  {
+    "qco_id": "QCO-TOYS-2020",
+    "title": "Toys (Quality Control) Order, 2020",
+    "ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "gazette_notification_number": "S.O. 853(E)",
+    "notification_date": "2020-02-25",
+    "enforcement_date": "2021-01-01",
+    "status": "Active & Mandatory",
+    "applicable_standards": [
+      { "standard": "IS 9873 (Part 1):2019", "product": "Safety of Toys - Mechanical and physical properties" },
+      { "standard": "IS 9873 (Part 2):2017", "product": "Safety of Toys - Flammability" },
+      { "standard": "IS 9873 (Part 3):2020", "product": "Safety of Toys - Migration of certain elements (Heavy metals)" },
+      { "standard": "IS 15644:2006", "product": "Safety of Electric Toys" }
+    ],
+    "scheme": "Scheme-I (ISI Mark Certification for Domestic and Foreign Manufacturers - FMCS)",
+    "msme_exemption_rules": {
+      "micro_enterprises": "No exemption from safety clauses. Concession in certification fee provided.",
+      "small_enterprises": "Cluster testing facilitation at BIS accredited private & government testing laboratories.",
+      "medium_enterprises": "Full compliance required."
+    },
+    "penal_provisions": "Strict ban on uncertified import containers at Indian Customs ports.",
+    "customs_tariff_hs_codes": ["95030010", "95030020", "95030030", "95030090"]
+  },
+  {
+    "qco_id": "QCO-ELECTRICAL-CABLES-2023",
+    "title": "Electrical Wires and Cables (Quality Control) Order, 2023",
+    "ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "gazette_notification_number": "S.O. 4210(E)",
+    "notification_date": "2023-09-22",
+    "enforcement_date": "2024-03-22",
+    "status": "Active & Mandatory",
+    "applicable_standards": [
+      { "standard": "IS 694:2010", "product": "PVC insulated cables for working voltages up to and including 1100 V" },
+      { "standard": "IS 7098 (Part 1):1988", "product": "Cross-linked polyethylene insulated PVC sheathed cables" },
+      { "standard": "IS 9968 (Part 1):1988", "product": "Elastomer insulated cables" }
+    ],
+    "scheme": "Scheme-I (ISI Mark)",
+    "msme_exemption_rules": {
+      "micro_enterprises": "Special 9-month extension provided for Micro units subject to submitting raw material test reports.",
+      "small_enterprises": "Special 6-month extension.",
+      "medium_enterprises": "Enforced."
+    },
+    "penal_provisions": "Section 29 BIS Act 2016 penalties apply.",
+    "customs_tariff_hs_codes": ["85441110", "85441190", "85444990"]
+  }
+]

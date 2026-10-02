@@ -1,0 +1,143 @@
+{
+  "standard_code": "IS 1786:2008",
+  "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement — Specification (Fourth Revision)",
+  "source": "Bureau of Indian Standards",
+  "source_url": "https://www.bis.gov.in/",
+  "document_type": "standard",
+  "verification_status": "authoritative",
+  "evidence": [
+    {
+      "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
+      "section": "1.1 Scope",
+      "source_url": "https://www.bis.gov.in/"
+    }
+  ],
+  "category": "Civil & Metallurgical Engineering",
+  "sti_reference": "STI/1786/7 (Scheme of Testing and Inspection)",
+  "formulae": {
+    "carbon_equivalent": {
+      "expression": "C + (Mn / 6) + ((Cr + Mo + V) / 5) + ((Ni + Cu) / 15)",
+      "clause": "Table 1, Note 1",
+      "description": "Carbon equivalent formula evaluated when carbon content exceeds 0.12%"
+    },
+    "ts_ys_ratio": {
+      "expression": "tensile_strength / yield_stress",
+      "clause": "Table 3",
+      "description": "Ratio of Ultimate Tensile Strength to 0.2% Proof Stress / Yield Stress"
+    }
+  },
+  "grades": {
+    "Fe 415": {
+      "chemical_limits": {
+        "carbon": { "max": 0.30, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur": { "max": 0.060, "unit": "%", "clause": "IS 1786 Table 1" },
+        "phosphorus": { "max": 0.060, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur_plus_phosphorus": { "max": 0.110, "unit": "%", "clause": "IS 1786 Table 1" },
+        "carbon_equivalent": { "max": 0.42, "unit": "%", "clause": "IS 1786 Table 1 Note 1" }
+      },
+      "mechanical_limits": {
+        "yield_stress": { "min": 415.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "tensile_strength": { "min": 485.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "ts_ys_ratio": { "min": 1.10, "unit": "ratio", "clause": "IS 1786 Table 3" },
+        "elongation": { "min": 14.5, "unit": "%", "clause": "IS 1786 Table 3" },
+        "total_elongation_at_max_force": { "min": 0.0, "unit": "%", "clause": "IS 1786 Table 3" }
+      }
+    },
+    "Fe 500": {
+      "chemical_limits": {
+        "carbon": { "max": 0.30, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur": { "max": 0.055, "unit": "%", "clause": "IS 1786 Table 1" },
+        "phosphorus": { "max": 0.055, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur_plus_phosphorus": { "max": 0.105, "unit": "%", "clause": "IS 1786 Table 1" },
+        "carbon_equivalent": { "max": 0.42, "unit": "%", "clause": "IS 1786 Table 1 Note 1" }
+      },
+      "mechanical_limits": {
+        "yield_stress": { "min": 500.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "tensile_strength": { "min": 545.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "ts_ys_ratio": { "min": 1.08, "unit": "ratio", "clause": "IS 1786 Table 3" },
+        "elongation": { "min": 12.0, "unit": "%", "clause": "IS 1786 Table 3" },
+        "total_elongation_at_max_force": { "min": 0.0, "unit": "%", "clause": "IS 1786 Table 3" }
+      }
+    },
+    "Fe 500D": {
+      "chemical_limits": {
+        "carbon": { "max": 0.25, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "phosphorus": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur_plus_phosphorus": { "max": 0.075, "unit": "%", "clause": "IS 1786 Table 1" },
+        "carbon_equivalent": { "max": 0.42, "unit": "%", "clause": "IS 1786 Table 1 Note 1" }
+      },
+      "mechanical_limits": {
+        "yield_stress": { "min": 500.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "tensile_strength": { "min": 565.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "ts_ys_ratio": { "min": 1.10, "unit": "ratio", "clause": "IS 1786 Table 3" },
+        "elongation": { "min": 16.0, "unit": "%", "clause": "IS 1786 Table 3" },
+        "total_elongation_at_max_force": { "min": 5.0, "unit": "%", "clause": "IS 1786 Table 3" }
+      }
+    },
+    "Fe 550D": {
+      "chemical_limits": {
+        "carbon": { "max": 0.25, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "phosphorus": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur_plus_phosphorus": { "max": 0.075, "unit": "%", "clause": "IS 1786 Table 1" },
+        "carbon_equivalent": { "max": 0.42, "unit": "%", "clause": "IS 1786 Table 1 Note 1" }
+      },
+      "mechanical_limits": {
+        "yield_stress": { "min": 550.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "tensile_strength": { "min": 600.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "ts_ys_ratio": { "min": 1.08, "unit": "ratio", "clause": "IS 1786 Table 3" },
+        "elongation": { "min": 14.5, "unit": "%", "clause": "IS 1786 Table 3" },
+        "total_elongation_at_max_force": { "min": 5.0, "unit": "%", "clause": "IS 1786 Table 3" }
+      }
+    },
+    "Fe 600": {
+      "chemical_limits": {
+        "carbon": { "max": 0.30, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "phosphorus": { "max": 0.040, "unit": "%", "clause": "IS 1786 Table 1" },
+        "sulfur_plus_phosphorus": { "max": 0.075, "unit": "%", "clause": "IS 1786 Table 1" },
+        "carbon_equivalent": { "max": 0.44, "unit": "%", "clause": "IS 1786 Table 1 Note 1" }
+      },
+      "mechanical_limits": {
+        "yield_stress": { "min": 600.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "tensile_strength": { "min": 660.0, "unit": "N/mm² (MPa)", "clause": "IS 1786 Table 3" },
+        "ts_ys_ratio": { "min": 1.06, "unit": "ratio", "clause": "IS 1786 Table 3" },
+        "elongation": { "min": 10.0, "unit": "%", "clause": "IS 1786 Table 3" },
+        "total_elongation_at_max_force": { "min": 0.0, "unit": "%", "clause": "IS 1786 Table 3" }
+      }
+    }
+  },
+  "nominal_mass_per_meter": {
+    "4": { "nominal_mass": 0.099, "tolerance_pct": 8.0, "clause": "IS 1786 Table 2" },
+    "5": { "nominal_mass": 0.154, "tolerance_pct": 8.0, "clause": "IS 1786 Table 2" },
+    "6": { "nominal_mass": 0.222, "tolerance_pct": 7.0, "clause": "IS 1786 Table 2" },
+    "8": { "nominal_mass": 0.395, "tolerance_pct": 7.0, "clause": "IS 1786 Table 2" },
+    "10": { "nominal_mass": 0.617, "tolerance_pct": 7.0, "clause": "IS 1786 Table 2" },
+    "12": { "nominal_mass": 0.888, "tolerance_pct": 5.0, "clause": "IS 1786 Table 2" },
+    "16": { "nominal_mass": 1.580, "tolerance_pct": 5.0, "clause": "IS 1786 Table 2" },
+    "20": { "nominal_mass": 2.470, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" },
+    "25": { "nominal_mass": 3.850, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" },
+    "28": { "nominal_mass": 4.830, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" },
+    "32": { "nominal_mass": 6.310, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" },
+    "36": { "nominal_mass": 7.990, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" },
+    "40": { "nominal_mass": 9.860, "tolerance_pct": 3.0, "clause": "IS 1786 Table 2" }
+  },
+  "sti_rules": {
+    "sampling_lot_size_tonnes": 40,
+    "ladle_analysis_frequency": "1 test per heat/cast",
+    "product_analysis_frequency": "1 test per 40 tonnes or part thereof for each size",
+    "tensile_test_frequency": "1 test per 40 tonnes or part thereof for each size",
+    "bend_rebend_frequency": "1 test per 40 tonnes or part thereof for each size",
+    "mass_variation_frequency": "1 test per 10 tonnes or part thereof",
+    "surface_rib_geometry_frequency": "1 test per 8-hour shift per size",
+    "retun_retest_rule": "If any sample fails, two further samples from the same lot shall be tested. If both pass, lot passes; if either fails, lot is rejected."
+  },
+  "required_lab_equipment": [
+    { "name": "Optical Emission Spectrometer (OES) / Chemical Wet Lab", "purpose": "Chemical Ladle & Product Analysis (C, S, P, Mn, Si, Cr, Mo, V, Ni, Cu)", "calibration_interval_months": 6 },
+    { "name": "Universal Testing Machine (UTM) - Minimum 600 kN / 1000 kN capacity", "purpose": "0.2% Proof Stress, Tensile Strength, Total Elongation (IS 1608)", "calibration_interval_months": 12 },
+    { "name": "Mandrel Bend & Rebend Testing Rig", "purpose": "180 deg Cold Bend and 135/157.5 deg Reverse Bend testing (IS 1599)", "calibration_interval_months": 12 },
+    { "name": "Digital Micro-balance & Length Measuring Scale", "purpose": "Nominal mass per metre variation (IS 1786 Cl 6.2)", "calibration_interval_months": 6 },
+    { "name": "Optical Profile Projector / Depth Gauge Micrometer", "purpose": "Transverse rib height, rib spacing, and flank angle", "calibration_interval_months": 12 }
+  ]
+}

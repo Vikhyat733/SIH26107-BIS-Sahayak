@@ -1,0 +1,37 @@
+{
+  "certificate_id": "CUSTOM-MTC-2026-001",
+  "issue_date": "2026-10-01",
+  "manufacturer": {
+    "name": "My Custom Steel Plant Ltd",
+    "cml_license_number": "CM/L-8400192"
+  },
+  "product_details": {
+    "standard": "IS 1786:2008",
+    "product_name": "TMT Rebars",
+    "grade": "Fe 500D",
+    "nominal_diameter_mm": 16,
+    "lot_weight_tonnes": 40.0
+  },
+  "chemical_composition": {
+    "carbon": 0.22,
+    "sulfur": 0.035,
+    "phosphorus": 0.035,
+    "sulfur_plus_phosphorus": 0.070,
+    "manganese": 0.60,
+    "chromium": 0.02,
+    "molybdenum": 0.01,
+    "vanadium": 0.01,
+    "nickel": 0.02,
+    "copper": 0.02
+  },
+  "mechanical_properties": {
+    "yield_stress": 520.0,
+    "tensile_strength": 590.0,
+    "ts_ys_ratio": 1.1346,
+    "elongation": 17.5,
+    "total_elongation_at_max_force": 6.0
+  },
+  "physical_properties": {
+    "mass_per_meter": 1.580
+  }
+}
