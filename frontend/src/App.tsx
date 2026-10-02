@@ -3,14 +3,101 @@ import { Search, ShieldCheck, FlaskConical, BadgeCheck, FileCheck2, Send, Langua
 
 const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
+type ComplianceCheck = {
+    parameter: string;
+    reported_value: string;
+    requirement: string;
+    unit: string;
+    status: string;
+    reason: string;
+    evidence: string | null;
+};
+
+type ComplianceData = {
+    overall_status: string;
+    standard: {
+        number: string;
+        title: string;
+    };
+    product: string;
+    grade?: string;
+    document: {
+        filename: string;
+        type: string;
+    };
+    summary: string;
+    checks: ComplianceCheck[];
+    missing_fields: string[];
+    warnings: string[];
+    verification: {
+        method: string;
+        source: string;
+    };
+};
+
+type LabMetadata = {
+    standard: string | null;
+    location: string | null;
+};
+
+type CertificationData = {
+    product: string;
+    standard: string;
+    certification_status: string;
+    qco: {
+        applicable: boolean;
+        title: string;
+        source_url: string;
+    };
+    scheme: {
+        scheme_name: string;
+        scheme_number: string;
+        source_url: string;
+    };
+    next_steps: string[];
+};
+
+type EvidenceItem = {
+    standard_number?: string;
+    id?: string;
+    title?: string;
+    relevance?: number;
+    retrieval_reason?: string;
+    evidence?: { text: string; section?: string }[];
+    text?: string;
+    section?: string;
+    source?: string;
+    document_title?: string;
+    source_url?: string;
+    name?: string;
+    address?: string;
+    remark?: string;
+    standard?: string;
+    scope?: string;
+    product?: string;
+    lab_code?: string;
+    testing_charges?: string;
+    validity_date?: string;
+    [key: string]: unknown;
+};
+
+type SourceItem = {
+    name?: string;
+    url?: string;
+    document?: string;
+    [key: string]: unknown;
+};
+
 type Result = { 
     answer: string; 
     confidence: number;
-    sources: any[];
-    evidence: any[]; 
+    sources: SourceItem[];
+    evidence: EvidenceItem[]; 
     needs_verification: boolean; 
     intent?: string;
-    certification_data?: any;
+    certification_data?: CertificationData;
+    compliance_data?: ComplianceData;
+    lab_metadata?: LabMetadata;
 };
 
 export default function App() {
@@ -41,10 +128,11 @@ export default function App() {
         }
       }
       setResult(await r.json());
-    } catch (err: any) {
+    } catch (err: unknown) {
       let answerMsg = 'Unable to connect to BIS Sahayak backend.';
-      if (err.message === '4xx') answerMsg = 'Request could not be processed.';
-      if (err.message === '5xx') answerMsg = 'BIS Assistant encountered a server error.';
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg === '4xx') answerMsg = 'Request could not be processed.';
+      if (msg === '5xx') answerMsg = 'BIS Assistant encountered a server error.';
       setResult({answer: answerMsg, confidence:0, sources:[], evidence:[], needs_verification:true});
     } finally { setLoading(false); }
   }
@@ -62,7 +150,7 @@ export default function App() {
         }
         const data = await r.json();
         if (data.recommendations && data.recommendations.length > 0) {
-            let answerText = data.recommendations.map((x:any) => {
+            let answerText = data.recommendations.map((x: EvidenceItem) => {
                const product = x.title ? x.title.split('—')[0].split('-')[0].trim().toLowerCase() : prod.toLowerCase();
                return `${x.standard_number || x.id} is identified in the available BIS evidence as covering ${product}.`;
             }).join('\n');
@@ -71,7 +159,7 @@ export default function App() {
             setResult({
               answer: answerText,
               confidence: 0.9,
-              sources: data.recommendations.map((x:any)=>({ name: x.source, url: x.source_url, document: x.standard_number })),
+              sources: data.recommendations.map((x: EvidenceItem)=>({ name: x.source, url: x.source_url, document: x.standard_number })),
               evidence: data.recommendations,
               needs_verification: false,
               intent: 'standard_recommendation'
@@ -86,10 +174,11 @@ export default function App() {
               intent: 'standard_recommendation'
             });
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         let answerMsg = 'Unable to connect to BIS Sahayak backend.';
-        if (err.message === '4xx') answerMsg = 'Request could not be processed.';
-        if (err.message === '5xx') answerMsg = 'BIS Assistant encountered a server error.';
+        const msg = err instanceof Error ? err.message : String(err);
+        if (msg === '4xx') answerMsg = 'Request could not be processed.';
+        if (msg === '5xx') answerMsg = 'BIS Assistant encountered a server error.';
         setResult({
           answer: answerMsg,
           confidence: 0,
@@ -179,7 +268,7 @@ export default function App() {
         intent: 'COMPLIANCE_RESULT',
         compliance_data: data
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
         setResult({
           answer: 'Unable to connect to BIS Sahayak backend for compliance check.',
           confidence: 0,
@@ -262,11 +351,11 @@ export default function App() {
             <div className="recommendations-section">
               <br/>
               <h3>Recommended Standards</h3>
-              {result.evidence.map((x: any, i: number) => (
+              {result.evidence.map((x, i: number) => (
                 <div key={i} className="rec-card" style={{border: '1px solid #ccc', padding: '15px', marginBottom: '10px', borderRadius: '4px'}}>
                   <h4 style={{margin: '0 0 5px 0'}}>{x.standard_number || x.id}</h4>
                   <p style={{margin: '0 0 15px 0'}}>{x.title}</p>
-                  <p style={{margin: '0 0 5px 0'}}><strong>Relevance:</strong> {x.relevance > 0.8 ? 'High' : 'Medium'}</p>
+                  <p style={{margin: '0 0 5px 0'}}><strong>Relevance:</strong> {(x.relevance ?? 0) > 0.8 ? 'High' : 'Medium'}</p>
                   
                   {x.retrieval_reason && (
                     <p style={{margin: '0 0 10px 0'}}><strong>Why this was retrieved:</strong><br/>{x.retrieval_reason}</p>
@@ -276,7 +365,7 @@ export default function App() {
                     <div style={{margin: '15px 0', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '4px'}}>
                       <h5 style={{margin: '0 0 5px 0'}}>Evidence</h5>
                       <hr style={{margin: '5px 0', border: 'none', borderTop: '1px solid #ddd'}} />
-                      {x.evidence.map((e: any, j: number) => (
+                      {x.evidence.map((e, j: number) => (
                         <p key={j} style={{margin: '5px 0'}}>
                           "{e.text}" <br/>
                           <small style={{color: '#666'}}>- Section {e.section}</small>
@@ -344,7 +433,7 @@ export default function App() {
                         </tr>
                       </thead>
                       <tbody>
-                        {data.checks.map((chk: any, i: number) => (
+                        {data.checks.map((chk, i: number) => (
                           <tr key={i} style={{borderBottom: '1px solid #ddd'}}>
                             <td style={{padding: '8px', border: '1px solid #ddd'}}>{chk.parameter}</td>
                             <td style={{padding: '8px', border: '1px solid #ddd'}}>{chk.reported_value} {chk.unit}</td>
@@ -422,12 +511,12 @@ export default function App() {
             const currentQuery = query || labSearchQuery || '';
             const lowerQuery = currentQuery.toLowerCase();
             
-            const meta = result.lab_metadata || {};
+            const meta: Partial<LabMetadata> = result.lab_metadata || {};
             const extStandard = meta.standard || currentQuery;
             const extLocation = (meta.location || labSearchLocation).trim();
             const lowerLoc = extLocation.toLowerCase();
 
-            const getScore = (lab: any) => {
+            const getScore = (lab: EvidenceItem) => {
               let score = 0;
               const standard = (lab.standard || '').toLowerCase();
               const scope = (lab.scope || '').toLowerCase();
@@ -438,10 +527,10 @@ export default function App() {
               return score;
             };
 
-            const matchedLabs: any[] = [];
-            const otherLabs: any[] = [];
+            const matchedLabs: EvidenceItem[] = [];
+            const otherLabs: EvidenceItem[] = [];
 
-            result.evidence.forEach((lab: any) => {
+            result.evidence.forEach((lab) => {
               const name = (lab.name || '').toLowerCase();
               const address = (lab.address || '').toLowerCase();
               const remark = (lab.remark || '').toLowerCase();
@@ -485,7 +574,7 @@ export default function App() {
                    </div>
                 )}
                 
-                {currentLabs.map((lab: any, i: number) => {
+                {currentLabs.map((lab, i: number) => {
                   const isMatched = extLocation && matchedLabs.includes(lab);
                   
                   let header = null;
@@ -546,7 +635,7 @@ export default function App() {
             <div className="evidence-section">
               <br/>
               <h3>Evidence</h3>
-              {result.evidence && result.evidence.length > 0 ? result.evidence.map((x: any, i: number) => (
+              {result.evidence && result.evidence.length > 0 ? result.evidence.map((x, i: number) => (
                 <div key={i} style={{marginBottom: '10px'}}>
                   <div>────────────────────────</div>
                   <div style={{marginTop: '10px', fontStyle: 'italic', paddingLeft: '10px', borderLeft: '3px solid #ccc'}}>"{x.text}"</div>
