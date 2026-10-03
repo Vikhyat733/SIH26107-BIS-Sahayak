@@ -71,53 +71,62 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY") -> Dict[str,
     
     logger.info(f"Evidence selected: {doc.document_id}")
     
-    # Deterministic Answer Generation (Mocking LLM output for Phase 1)
-    if intent in ("STANDARD_LOOKUP", "standard_recommendation") or doc.source_type == "standard":
-        std = doc.standard_number or doc.document_id
-        # Extract product from title
-        title = doc.title
-        product = title.split("—")[0].split("-")[0].strip().lower() if title else query.lower()
-        answer = f"{std} is identified in the available BIS evidence as covering {product}.\n\nVerify current applicability and regulatory requirements before compliance action."
-        
-        evidence = [{
-            "standard_number": std,
-            "title": doc.title,
-            "relevance": 0.85,
-            "retrieval_reason": "Matched based on product description keywords.",
-            "evidence": json.loads(doc.content).get("evidence", []) if "{" in doc.content else [],
-            "source": doc.authority,
-            "source_url": doc.source_url,
-            "verification_status": "unverified",
-            "document_type": "standard"
-        }]
-    elif doc.source_type == "qco":
-        qco_title = doc.title
-        answer = f"Found a relevant Quality Control Order (QCO): {qco_title}."
-        
-        # We try to keep it simple for generic queries, but if they hit QCO through RAG...
-        evidence = [{
-            "text": doc.content[:500] + "...",
-            "document_title": doc.title,
-            "source": doc.authority,
-            "source_url": doc.source_url,
-            "verification_status": "authoritative"
-        }]
-    else: # general
-        # The content is usually "Title Content..." from our retrieval loader
-        # Let's extract the actual content by removing the title if it starts with it
-        content = doc.content
-        if content.startswith(doc.title):
-            content = content[len(doc.title):].strip()
-            
-        answer = content
-        evidence = [{
-            "text": content,
-            "document_title": doc.title,
-            "section": doc.section or "Overview",
-            "source": doc.authority,
-            "source_url": doc.source_url,
-            "verification_status": "authoritative"
-        }]
+    # Deterministic Answer Generation (Mocking LLM output for Phase 1) fallback
+    def generate_deterministic_fallback():
+        if intent in ("STANDARD_LOOKUP", "standard_recommendation") or doc.source_type == "standard":
+            std = doc.standard_number or doc.document_id
+            title = doc.title
+            product = title.split("—")[0].split("-")[0].strip().lower() if title else query.lower()
+            return f"{std} is identified in the available BIS evidence as covering {product}.\n\nVerify current applicability and regulatory requirements before compliance action."
+        elif doc.source_type == "qco":
+            qco_title = doc.title
+            return f"Found a relevant Quality Control Order (QCO): {qco_title}."
+        else:
+            content = doc.content
+            if content.startswith(doc.title):
+                content = content[len(doc.title):].strip()
+            return content
+
+    # Build EvidencePacket
+    from ..llm import EvidencePacket, EvidenceItem, get_provider
+    ev_item = EvidenceItem(
+        document_id=doc.document_id,
+        title=doc.title,
+        source_authority=doc.authority,
+        excerpt=doc.content[:1500],  # Keep excerpt reasonable
+        relevance_score=top_cand.get("final_score", 0.0),
+        url=doc.source_url or ""
+    )
+    packet = EvidencePacket(
+        query=query,
+        intent=intent,
+        evidence=[ev_item]
+    )
+
+    provider = get_provider()
+    generated = None
+    if provider:
+        generated = provider.generate(packet)
+
+    if generated:
+        answer = generated.answer
+        if generated.caveats:
+            answer += "\n\nCaveats:\n- " + "\n- ".join(generated.caveats)
+        if generated.next_steps:
+            answer += "\n\nNext Steps:\n- " + "\n- ".join(generated.next_steps)
+    else:
+        answer = "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\n"
+        answer += generate_deterministic_fallback()
+
+    # Shared evidence block
+    evidence = [{
+        "text": doc.content[:500] + "...",
+        "document_title": doc.title,
+        "source": doc.authority,
+        "source_url": doc.source_url,
+        "verification_status": "authoritative",
+        "document_type": doc.source_type
+    }]
 
     sources = [{
         "name": doc.authority,

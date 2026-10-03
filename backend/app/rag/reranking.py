@@ -16,7 +16,8 @@ ENTITY_MAPPINGS = {
         {"alias": "high strength reinforcement bar", "type": "specific"},
         {"alias": "reinforcement bar", "type": "broad"},
         {"alias": "reinforcement bars", "type": "broad"},
-        {"alias": "steel reinforcement", "type": "broad"}
+        {"alias": "steel reinforcement", "type": "broad"},
+        {"alias": "reinforcement steel", "type": "broad"}
     ],
     "IS_10500_2012": [
         {"alias": "drinking water", "type": "specific"},

@@ -37,7 +37,7 @@ def check_grounding(query: str, ranked_candidates: List[Dict[str, Any]], intent:
     if is_standard_query or is_standard_result:
         has_id = signals.get("identifier_match", False)
         has_alias = signals.get("alias_score", 0) >= 1.0
-        has_strong_semantic = signals.get("semantic_score", 0) >= 0.70
+        has_strong_semantic = signals.get("semantic_score", 0) >= 0.75
         
         if not (has_id or has_alias or has_strong_semantic):
             logger.warning(f"Grounding failed: Query '{query}' lacks specific entity, identifier match, or strong semantic link. Likely ambiguous.")

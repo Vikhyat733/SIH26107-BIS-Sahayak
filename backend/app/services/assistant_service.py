@@ -4,37 +4,33 @@ from .bis_general_service import answer_general_query
 from ..rag.pipeline import run_rag_pipeline
 from .certification_service import get_certification_info
 from .laboratory_service import find_laboratories
-import re
+from ..rag.query_understanding import QueryUnderstandingService
+
+qu_service = QueryUnderstandingService()
 
 def answer(query: str, language: str = "en") -> Dict[str, Any]:
-    q = query.lower().strip()
+    # Phase 3A: Query Understanding
+    understanding = qu_service.understand(query)
+    intent = understanding.intent
     
-    # Classify intent
-    intent = "BIS_GENERAL_QUERY"
-    
-    # Check for STANDARD_LOOKUP (e.g. "is 1786", "is 1786:2008", "IS:1786")
-    if re.match(r"^is\s*:?\s*\d+(:\d{4})?$", q):
-        intent = "STANDARD_LOOKUP"
-    # Check for standard_recommendation
-    elif any(k in q for k in ["which standard", "which bis standard", "standard applies to"]):
-        intent = "standard_recommendation"
-    elif len(q.split()) <= 3 and ("phone" in q or "tmt" in q or "mobile" in q):
-        intent = "standard_recommendation"
-    elif q.startswith("smx"):
-        intent = "standard_recommendation"
+    # 1. Check for immediate clarification needs
+    if understanding.needs_clarification:
+        return {
+            "intent": intent,
+            "answer": understanding.clarification_reason,
+            "evidence": [],
+            "sources": [],
+            "confidence": 0.0,
+            "needs_verification": True,
+            "query_understanding": {
+                "specificity": understanding.specificity,
+                "entities": [e.canonical for e in understanding.product_entities]
+            }
+        }
         
-    # Check for CERTIFICATION_QUERY
-    if any(k in q for k in ["mandatory", "certification", "qco", "require bis", "how do i get"]):
-        if not ("what is bis certification" in q or "what is a qco" in q or "what is a quality control order" in q):
-            intent = "CERTIFICATION_QUERY"
-            
-    # Check for LAB_LOOKUP
-    if any(k in q for k in ["test", "lab", "laboratory", "laboratories", "testing", "where can i get my product tested"]):
-        if not ("what is a lab" in q):
-            intent = "LAB_LOOKUP"
-        
-    # If it's a standard recommendation intent, we use the RAG pipeline
+    # 2. Routing based on detected intent
     if intent in ("standard_recommendation", "STANDARD_LOOKUP"): 
+        # Pass the pre-processed plan to the pipeline or just the original query as baseline
         return run_rag_pipeline(query, intent=intent)
 
     if intent == "CERTIFICATION_QUERY":
@@ -55,5 +51,28 @@ def answer(query: str, language: str = "en") -> Dict[str, Any]:
             }
         }
 
-    # Use the new RAG pipeline for general queries
-    return run_rag_pipeline(query, intent="BIS_GENERAL_QUERY")
+    if intent == "HALLMARKING_QUERY":
+        from .hallmarking_service import get_hallmarking_guidance
+        hm_res = get_hallmarking_guidance(query)
+        return {
+            "answer": hm_res["message"],
+            "intent": intent,
+            "sources": [],
+            "evidence": [],
+            "confidence": 0.85,
+            "needs_verification": True
+        }
+
+    if intent == "COMPLIANCE_QUERY":
+        return {
+            "answer": "To check compliance, please upload your Material Test Certificate (MTC) through the Compliance Check feature.",
+            "intent": intent,
+            "sources": [],
+            "evidence": [],
+            "confidence": 1.0,
+            "needs_verification": False
+        }
+
+    # 3. Default routing (General queries, QCO, etc.)
+    # QCO_QUERY and BIS_GENERAL_QUERY route to RAG
+    return run_rag_pipeline(query, intent=intent)
