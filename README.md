@@ -20,7 +20,6 @@ The Bureau of Indian Standards (BIS) oversees numerous standards, quality contro
 - Evidence/provenance architecture
 - Trust-first AI architecture
 
-*Note: Compliance PDF extraction is **Under active development**.*
 
 ## Current Status
 
@@ -33,10 +32,10 @@ The Bureau of Indian Standards (BIS) oversees numerous standards, quality contro
 - Lab pagination
 - Location filtering
 - Evidence/provenance
+- MTC/Test Report PDF extraction
+- Compliance result automation
 
 ### In Progress
-- MTC/Test Report PDF extraction (Under active development)
-- Compliance result automation
 - Multilingual/Hindi
 - Hallmarking
 - Final integration/polish

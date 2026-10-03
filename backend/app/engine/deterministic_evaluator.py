@@ -12,13 +12,13 @@ from pydantic import BaseModel, Field
 class ParameterAuditResult(BaseModel):
     parameter_key: str
     parameter_name: str
-    measured_value: float
+    measured_value: Optional[float] = None
     unit: str
     standard_min: Optional[float] = None
     standard_max: Optional[float] = None
-    status: str  # "PASS", "FAIL", "WARNING"
-    delta: float  # Difference from threshold (positive when exceeding max or distance from min)
-    delta_type: str  # "EXCEEDED_MAX", "BELOW_MIN", "WITHIN_LIMITS"
+    status: str  # "PASS", "FAIL", "WARNING", "REVIEW"
+    delta: Optional[float] = None  # Difference from threshold (positive when exceeding max or distance from min)
+    delta_type: str  # "EXCEEDED_MAX", "BELOW_MIN", "WITHIN_LIMITS", "UNKNOWN"
     clause_citation: str
     remarks: str
 
@@ -133,20 +133,31 @@ class DeterministicEvaluator:
         results: List[ParameterAuditResult] = []
         violations: List[str] = []
 
+        def safe_float(val):
+            if val is None: return None
+            try: return float(val)
+            except (ValueError, TypeError): return None
+
         # 1. Chemical Composition Evaluation
-        c = float(chem_input.get("carbon", 0.0))
-        s = float(chem_input.get("sulfur", 0.0))
-        p = float(chem_input.get("phosphorus", 0.0))
-        sp = float(chem_input.get("sulfur_plus_phosphorus", round(s + p, 4)))
-        mn = float(chem_input.get("manganese", 0.0))
-        cr = float(chem_input.get("chromium", 0.0))
-        mo = float(chem_input.get("molybdenum", 0.0))
-        v = float(chem_input.get("vanadium", 0.0))
-        ni = float(chem_input.get("nickel", 0.0))
-        cu = float(chem_input.get("copper", 0.0))
+        c = safe_float(chem_input.get("carbon"))
+        s = safe_float(chem_input.get("sulfur"))
+        p = safe_float(chem_input.get("phosphorus"))
+        
+        sp = safe_float(chem_input.get("sulfur_plus_phosphorus"))
+        if sp is None and s is not None and p is not None:
+            sp = round(s + p, 4)
+            
+        mn = safe_float(chem_input.get("manganese"))
+        cr = safe_float(chem_input.get("chromium"))
+        mo = safe_float(chem_input.get("molybdenum"))
+        v = safe_float(chem_input.get("vanadium"))
+        ni = safe_float(chem_input.get("nickel"))
+        cu = safe_float(chem_input.get("copper"))
 
         # Carbon Equivalent calculation
-        ce_calc = self.calculate_carbon_equivalent(c, mn, cr, mo, v, ni, cu)
+        ce_calc = None
+        if c is not None and mn is not None:
+            ce_calc = self.calculate_carbon_equivalent(c, mn, cr or 0.0, mo or 0.0, v or 0.0, ni or 0.0, cu or 0.0)
 
         chem_dict_to_check = {
             "carbon": ("Carbon (%C)", c, chem_limits.get("carbon", {})),
@@ -163,7 +174,13 @@ class DeterministicEvaluator:
             clause = rule.get("clause", "IS 1786 Table 1")
             unit = rule.get("unit", "%")
 
-            if max_val is not None and val > max_val:
+            if val is None:
+                status = "REVIEW"
+                delta = None
+                delta_type = "UNKNOWN"
+                rem = "Missing or unparseable value"
+                violations.append(f"{pname}: Value missing or unparseable (requires manual review) [{clause}]")
+            elif max_val is not None and val > max_val:
                 delta = round(val - max_val, 4)
                 status = "FAIL"
                 delta_type = "EXCEEDED_MAX"
@@ -192,13 +209,16 @@ class DeterministicEvaluator:
             )
 
         # 2. Mechanical Properties Evaluation
-        ys = float(mech_input.get("yield_stress", 0.0))
-        ts = float(mech_input.get("tensile_strength", 0.0))
+        ys = safe_float(mech_input.get("yield_stress"))
+        ts = safe_float(mech_input.get("tensile_strength"))
         
         # Calculate or verify TS/YS ratio
-        ts_ys = float(mech_input.get("ts_ys_ratio", self.calculate_ts_ys_ratio(ts, ys)))
-        elong = float(mech_input.get("elongation", 0.0))
-        tot_elong = float(mech_input.get("total_elongation_at_max_force", 0.0))
+        ts_ys = safe_float(mech_input.get("ts_ys_ratio"))
+        if ts_ys is None and ts is not None and ys is not None:
+            ts_ys = self.calculate_ts_ys_ratio(ts, ys)
+            
+        elong = safe_float(mech_input.get("elongation"))
+        tot_elong = safe_float(mech_input.get("total_elongation_at_max_force"))
 
         mech_dict_to_check = {
             "yield_stress": ("0.2% Proof Stress / Yield Stress", ys, mech_limits.get("yield_stress", {})),
@@ -216,7 +236,20 @@ class DeterministicEvaluator:
             unit = rule.get("unit", "")
 
             # If min_val is 0.0 and total_elongation is not tested / not mandatory for that grade, pass
-            if min_val is not None and min_val > 0.0 and val < min_val:
+            if val is None:
+                # If rule has a min_val > 0, it's mandatory
+                if min_val is not None and min_val > 0.0:
+                    status = "REVIEW"
+                    delta = None
+                    delta_type = "UNKNOWN"
+                    rem = "Missing or unparseable value"
+                    violations.append(f"{pname}: Value missing or unparseable (requires manual review) [{clause}]")
+                else:
+                    status = "PASS"
+                    delta = None
+                    delta_type = "WITHIN_LIMITS"
+                    rem = "Not mandatory for this grade"
+            elif min_val is not None and min_val > 0.0 and val < min_val:
                 delta = round(min_val - val, 4)
                 status = "FAIL"
                 delta_type = "BELOW_MIN"
@@ -286,10 +319,14 @@ class DeterministicEvaluator:
 
         total_checked = len(results)
         failed = sum(1 for r in results if r.status == "FAIL")
-        passed = total_checked - failed
+        review = sum(1 for r in results if r.status == "REVIEW")
+        passed = total_checked - failed - review
         score = round((passed / total_checked * 100.0), 1) if total_checked > 0 else 100.0
 
-        overall = "CONFORMING (PASS)" if failed == 0 else "NON-CONFORMING (FAIL)"
+        if review > 0:
+            overall = "REVIEW"
+        else:
+            overall = "CONFORMING (PASS)" if failed == 0 else "NON-CONFORMING (FAIL)"
 
         import datetime
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")

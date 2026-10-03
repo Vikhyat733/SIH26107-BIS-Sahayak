@@ -27,7 +27,12 @@ def _extract_data_from_text(text: str) -> dict:
     logger.debug(f"First 1000 chars: {text[:1000]}")
     logger.debug(f"IS 1786:2008 in text: {'IS 1786:2008' in text}")
 
-    report_data = {"parameters": {}}
+    report_data = {
+        "parameters": {},  # Keep for backwards compatibility or IS 10500
+        "chemical_composition": {},
+        "mechanical_properties": {},
+        "physical_properties": {}
+    }
     
     # 1. Standard Extraction
     std_match = re.search(r'(?:IS|Indian\s+Standard)\s*(\d+)(?:\s*[:/\-]\s*(\d+))?', text, re.IGNORECASE)
@@ -59,29 +64,53 @@ def _extract_data_from_text(text: str) -> dict:
     if batch_match:
         report_data["batch_number"] = batch_match.group(1)
 
-    # 3. Parameter Extraction
-    param_patterns = {
-        "yield_strength": r'(?:Yield\s+Strength|Yield\s+Stress)(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "tensile_strength": r'(?:Tensile\s+Strength|Ultimate\s+Tensile\s+Strength)(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "elongation": r'Elongation(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "carbon": r'Carbon(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "manganese": r'Manganese(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "sulphur": r'(?:Sulphur|Sulfur)(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "phosphorus": r'Phosphorus(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "carbon_equivalent": r'Carbon\s+Equivalent(?:\s*%)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "nominal_diameter": r'Nominal\s+Diameter(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "ph_value": r'pH(?:\s*Value)?(?:\s*:)?\s*(\d+(?:\.\d+)?)',
-        "turbidity": r'Turbidity(?:\s*:)?\s*(\d+(?:\.\d+)?)'
+    # 3. Parameter Extraction with realistic aliases and robust newline/spacing tolerance
+    mech_patterns = {
+        "yield_stress": r'(?:Yield\s+Strength|0\.2%\s*Proof\s+Stress|Proof\s+Stress|Yield\s+Stress)(?:[\s:\|\(\)]*(?:MPa|N/mm2|N/mm²|N/mm\^2))?[\s:\|\(\)]*(\d+(?:\.\d+)?)',
+        "tensile_strength": r'(?:Tensile\s+Strength|Ultimate\s+Tensile\s+Strength)(?:[\s:\|\(\)]*(?:MPa|N/mm2|N/mm²|N/mm\^2))?[\s:\|\(\)]*(\d+(?:\.\d+)?)',
+        "elongation": r'(?<!Total\s)Elongation(?!\s*at)(?:[\s:\|\(\)%]*(?:Min|Max))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+        "total_elongation_at_max_force": r'Total\s+Elongation\s+at\s+Max(?:imum)?\s+Force(?:[\s:\|\(\)%]*(?:Min|Max))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+    }
+    
+    chem_patterns = {
+        "carbon": r'Carbon(?!\s+Equiv)(?:[\s:\|\(\)%]*(?:Max|Min|C))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+        "manganese": r'Manganese(?:[\s:\|\(\)%]*(?:Max|Min|Mn))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+        "sulfur": r'(?:Sulphur|Sulfur)(?!\s*plus)(?:[\s:\|\(\)%]*(?:Max|Min|S))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+        "phosphorus": r'Phosphorus(?:[\s:\|\(\)%]*(?:Max|Min|P))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
+        "carbon_equivalent": r'Carbon\s+Equivalent(?:[\s:\|\(\)%]*(?:Max|Min|CE|C\.E\.))?[\s:\|\(\)%]*(\d+(?:\.\d+)?)',
     }
 
-    for key, pattern in param_patterns.items():
+    phys_patterns = {
+        "mass_per_meter": r'Mass\s+per\s+met(?:er|re)(?:[\s:\|\(\)]*(?:kg/m))?[\s:\|\(\)]*(\d+(?:\.\d+)?)',
+    }
+
+    other_patterns = {
+        "nominal_diameter": r'Nominal\s+Diameter(?:[\s:\|\(\)]*(?:mm))?[\s:\|\(\)]*(\d+(?:\.\d+)?)',
+        "ph_value": r'pH(?:\s*Value)?[\s:\|\(\)]*(\d+(?:\.\d+)?)',
+        "turbidity": r'Turbidity[\s:\|\(\)]*(\d+(?:\.\d+)?)'
+    }
+
+    for key, pattern in mech_patterns.items():
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            report_data["mechanical_properties"][key] = float(match.group(1))
+
+    for key, pattern in chem_patterns.items():
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            report_data["chemical_composition"][key] = float(match.group(1))
+            
+    for key, pattern in phys_patterns.items():
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            report_data["physical_properties"][key] = float(match.group(1))
+
+    for key, pattern in other_patterns.items():
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             val = float(match.group(1))
             unit = ""
-            if key in ["yield_strength", "tensile_strength"]: unit = "MPa"
-            elif key in ["elongation", "carbon", "manganese", "sulphur", "phosphorus", "carbon_equivalent"]: unit = "%"
-            elif key == "nominal_diameter": unit = "mm"
+            if key == "nominal_diameter": unit = "mm"
             
             report_data["parameters"][key] = {"value": val, "unit": unit}
 
@@ -164,7 +193,7 @@ def _format_result(res, filename, ext):
             has_fail = True
         checks.append({
             "parameter": r.parameter_name,
-            "reported_value": str(r.measured_value),
+            "reported_value": str(r.measured_value) if r.measured_value is not None else "Missing",
             "requirement": f"Min: {r.standard_min if r.standard_min is not None else 'N/A'}, Max: {r.standard_max if r.standard_max is not None else 'N/A'}",
             "unit": r.unit,
             "status": st,
@@ -175,6 +204,8 @@ def _format_result(res, filename, ext):
     overall = "PASS" if not has_fail else "FAIL"
     if res.overall_status == "NON-CONFORMING (FAIL)":
         overall = "FAIL"
+    elif res.overall_status == "REVIEW":
+        overall = "REVIEW"
         
     return {
         "overall_status": overall,
@@ -188,7 +219,7 @@ def _format_result(res, filename, ext):
             "filename": filename,
             "type": ext
         },
-        "summary": f"Evaluated {res.total_parameters_checked} parameters. Passed: {res.passed_count}, Failed: {res.failed_count}",
+        "summary": f"Evaluated {res.total_parameters_checked} parameters. Passed: {res.passed_count}, Failed: {res.failed_count}, Review: {sum(1 for r in res.results if r.status == 'REVIEW')}",
         "checks": checks,
         "missing_fields": [],
         "warnings": res.violations,
