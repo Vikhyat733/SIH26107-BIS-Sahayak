@@ -33,43 +33,9 @@ def answer(query: str, language: str = "en") -> Dict[str, Any]:
         if not ("what is a lab" in q):
             intent = "LAB_LOOKUP"
         
-    # If it's a standard recommendation intent, we use the recommend flow
+    # If it's a standard recommendation intent, we use the RAG pipeline
     if intent in ("standard_recommendation", "STANDARD_LOOKUP"): 
-        recs = recommend_standards(query)
-        if recs:
-            answers = []
-            sources = []
-            for r in recs:
-                std = r.get("standard_number", r.get("id"))
-                title = r.get("title", "")
-                product = title.split("—")[0].split("-")[0].strip().lower() if title else query.lower()
-                answers.append(f"{std} is identified in the available BIS evidence as covering {product}.")
-                
-                sources.append({
-                    "name": r.get("source", "Bureau of Indian Standards"),
-                    "url": r.get("source_url", "https://www.bis.gov.in/"),
-                    "document": std
-                })
-            
-            answer_text = "\n".join(answers) + "\n\nVerify current applicability and regulatory requirements before compliance action."
-            evidence = recs
-            confidence = 0.85
-            needs_verification = False
-        else:
-            answer_text = "No sufficiently supported BIS standard was found for this product in the current knowledge base.\n\nTry describing the product in more detail."
-            evidence = []
-            confidence = 0.0
-            needs_verification = True
-            sources = []
-        
-        return {
-            "answer": answer_text,
-            "intent": intent,
-            "sources": sources,
-            "evidence": evidence,
-            "confidence": confidence,
-            "needs_verification": needs_verification
-        }
+        return run_rag_pipeline(query, intent=intent)
 
     if intent == "CERTIFICATION_QUERY":
         return get_certification_info(query)
@@ -89,5 +55,5 @@ def answer(query: str, language: str = "en") -> Dict[str, Any]:
             }
         }
 
-    # Use the general BIS service for general queries
-    return answer_general_query(query)
+    # Use the new RAG pipeline for general queries
+    return run_rag_pipeline(query, intent="BIS_GENERAL_QUERY")

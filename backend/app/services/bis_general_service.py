@@ -71,7 +71,7 @@ DEFAULT_KB = [
   {
     'id': 'qco_overview',
     'title': 'Quality Control Orders',
-    'search_queries': ['what is a quality control order under bis', 'qco', 'quality control orders', 'quality control order under bis'],
+    'search_queries': ['what is a quality control order under bis', 'qco', 'quality control orders', 'quality control order under bis', 'quality control order'],
     'category': 'Regulatory',
     'content': 'A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.',
     'source': 'Bureau of Indian Standards',

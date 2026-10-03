@@ -23,6 +23,12 @@ app.include_router(qco.router, prefix="/api")
 app.include_router(laboratories.router, prefix="/api")
 app.include_router(hallmarking.router, prefix="/api")
 
+@app.on_event("startup")
+def startup_event():
+    from .rag.semantic_retrieval import init_semantic_store
+    init_semantic_store()
+
+
 @app.get("/")
 def root():
     return {"name": "BIS Sahayak", "problem_statement": "SIH26107", "status": "development"}
