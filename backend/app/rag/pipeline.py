@@ -145,9 +145,8 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY", language: st
         doc = cand["document"]
         
         # Determine Source Verification Status
-        v_status = "Source Verified" if doc.authority == "Bureau of Indian Standards" else "Unverified Source"
-        if not doc.source_url or doc.source_url == "Unverified":
-            v_status = "Source Identity Unverified"
+        # We do not cryptographically verify static local JSON files, so we cannot claim Source Verified.
+        v_status = "Source Identity Unverified"
             
         evidence.append({
             "text": doc.content[:500] + "...",

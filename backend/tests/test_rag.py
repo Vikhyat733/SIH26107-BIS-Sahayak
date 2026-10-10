@@ -146,3 +146,11 @@ def test_semantic_ambiguity_guardrails():
         assert "applicable_qco" in doc_json
         assert doc_json["applicable_qco"] == "QCO-STEEL-2020"
 
+def test_source_verification_semantics():
+    """Verify that source identity and applicability are not hallucinated."""
+    res = run_rag_pipeline("TMT bars", intent="STANDARD_LOOKUP")
+    assert len(res["evidence"]) > 0
+    for ev in res["evidence"]:
+        assert ev["verification_status"] == "Source Identity Unverified"
+        assert ev["applicability"] == "Applicability not verified"
+
