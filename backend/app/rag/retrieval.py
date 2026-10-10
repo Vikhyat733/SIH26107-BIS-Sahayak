@@ -102,13 +102,19 @@ class RetrievalStore:
                 registry = json.loads(QCO_FILE.read_text(encoding="utf-8"))
                 for i, qco in enumerate(registry):
                     content_blob = json.dumps(qco, ensure_ascii=False)
+                    qco_source_url = qco.get("source_url")
+                    if not qco_source_url or qco_source_url == "Unknown":
+                        # We don't have a verified specific gazette URL.
+                        # Do not falsely claim the root page is the specific document URL.
+                        qco_source_url = "Unverified"
+                        
                     self.documents.append(Document(
                         document_id=f"qco_{i}",
                         source_type="qco",
                         title=qco.get("title", qco.get("product_name", "Unknown QCO")),
                         standard_number=None,
                         content=content_blob,
-                        source_url=qco.get("source_url", "https://www.bis.gov.in/quality-control-orders/"),
+                        source_url=qco_source_url,
                         authority="Bureau of Indian Standards"
                     ))
             except Exception as e:

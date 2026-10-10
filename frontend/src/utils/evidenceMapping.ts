@@ -7,6 +7,8 @@ export function parseEvidence(x: any, resultSources: any[], index: number) {
     let excerpts: any[] = [];
     let rawText = x.text;
 
+    let applicability = x.applicability || 'Applicability not verified';
+
     if (rawText && typeof rawText === 'string' && rawText.startsWith('{')) {
         try { 
             let parsedText = JSON.parse(rawText); 
@@ -15,6 +17,7 @@ export function parseEvidence(x: any, resultSources: any[], index: number) {
             sourceOrg = parsedText.source || sourceOrg;
             sourceUrl = parsedText.source_url || sourceUrl;
             verificationStatus = parsedText.verification_status || verificationStatus;
+            applicability = parsedText.applicability || applicability;
             if (parsedText.evidence) excerpts = parsedText.evidence;
         } catch(e) {
             let matchCode = rawText.match(/"standard_code"\s*:\s*"([^"]+)"/);
@@ -42,6 +45,7 @@ export function parseEvidence(x: any, resultSources: any[], index: number) {
         sourceOrg,
         sourceUrl,
         verificationStatus,
+        applicability,
         excerpts
     };
 }

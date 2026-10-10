@@ -2,14 +2,24 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .api.routes import health, assistant, standards, compliance, certification, qco, laboratories, hallmarking
 
+import os
+
 app = FastAPI(
     title="BIS Sahayak API",
     version="0.1.0",
     description="AI-assisted information and compliance services for SIH26107.",
 )
+
+# Parse origins from environment, fallback to local dev
+env_origins = os.getenv("FRONTEND_ORIGINS", "")
+if env_origins:
+    origins = [orig.strip() for orig in env_origins.split(",") if orig.strip()]
+else:
+    origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

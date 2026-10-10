@@ -63,3 +63,25 @@ def test_upload_unsupported_file_type():
     data = response.json()
     assert data["overall_status"] == "REVIEW"
     assert "Unsupported file type" in data["summary"]
+
+def test_upload_oversized_file():
+    # 5MB + 1 byte
+    oversized_data = b"0" * ((5 * 1024 * 1024) + 1)
+    response = client.post(
+        "/api/compliance/audit",
+        files={"file": ("large.json", oversized_data, "application/json")}
+    )
+    assert response.status_code == 413
+    assert "File too large" in response.json()["detail"]
+
+def test_upload_invalid_pdf_magic_bytes():
+    # File with .pdf extension but not starting with %PDF
+    fake_pdf = b"This is not a real PDF file"
+    response = client.post(
+        "/api/compliance/audit",
+        files={"file": ("fake.pdf", fake_pdf, "application/pdf")}
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["overall_status"] == "REVIEW"
+    assert "Invalid PDF format" in data["summary"]

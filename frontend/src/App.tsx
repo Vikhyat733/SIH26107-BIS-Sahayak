@@ -643,6 +643,7 @@ export default function App() {
                   sourceOrg,
                   sourceUrl,
                   verificationStatus,
+                  applicability,
                   excerpts
                 } = parseEvidence(x, result.sources, i);
 
@@ -663,8 +664,8 @@ export default function App() {
                       </div>
                       {verificationStatus && (
                         <span style={{
-                          backgroundColor: verificationStatus === 'authoritative' ? '#dcfce7' : '#f1f5f9',
-                          color: verificationStatus === 'authoritative' ? '#166534' : '#475569',
+                          backgroundColor: verificationStatus === 'Source Verified' ? '#dcfce7' : '#f1f5f9',
+                          color: verificationStatus === 'Source Verified' ? '#166534' : '#475569',
                           padding: '4px 8px',
                           borderRadius: '999px',
                           fontSize: '0.75em',
@@ -680,6 +681,7 @@ export default function App() {
                     
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '0.85em', color: '#64748b', marginBottom: '12px' }}>
                       <div><strong>Source:</strong> {sourceOrg}</div>
+                      <div><strong>Regulatory Status:</strong> <span style={{color: '#d9534f'}}>{applicability}</span></div>
                       {sourceUrl && (
                         <div>
                           <a href={sourceUrl} target="_blank" rel="noreferrer" style={{ color: '#2563eb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>

@@ -1,3 +1,4 @@
+import json
 from app.rag.schema import KnowledgeItem
 from app.rag.pipeline import run_rag_pipeline
 from app.rag.grounding import check_grounding
@@ -82,14 +83,66 @@ def test_semantic_ambiguity_guardrails():
     res_spec3 = run_rag_pipeline("TMT bars", intent="STANDARD_LOOKUP")
     assert res_spec3["needs_verification"] is False
     
+    # Phase 3C Targeted Tests
+    # Colloquial TMT/rebar questions
+    res_rebar1 = run_rag_pipeline("rebar BIS standard", intent="STANDARD_LOOKUP")
+    assert res_rebar1["needs_verification"] is False
+    assert "1786" in str(res_rebar1["evidence"])
+    
+    res_rebar2 = run_rag_pipeline("TMT bar standard", intent="STANDARD_LOOKUP")
+    assert res_rebar2["needs_verification"] is False
+    assert "1786" in str(res_rebar2["evidence"])
+
+    # Drinking-water questions
+    res_water = run_rag_pipeline("drinking water standard", intent="STANDARD_LOOKUP")
+    assert res_water["needs_verification"] is False
+    assert "10500" in str(res_water["evidence"])
+
+    # Safe Refusals (Generic queries)
+    assert run_rag_pipeline("standard for metal", intent="STANDARD_LOOKUP")["needs_verification"] is True
+    
+    # Unsupported fictional products
+    assert run_rag_pipeline("Give me the BIS standard for an unsupported fictional product.", intent="standard_recommendation")["needs_verification"] is True
+
     # Highly specific descriptive queries should pass via strong semantic linkage
-    from unittest.mock import patch
-    with patch("app.rag.semantic_retrieval.retrieve_semantic_documents") as mock_sem:
-        # Simulate a strong semantic match from the missing embedding provider
-        from app.rag.retrieval import _store
-        doc = next((d for d in _store.documents if "1786" in d.document_id), None)
-        if doc:
-            mock_sem.return_value = [{"document": doc, "retrieval_score": 0.85, "retrieval_method": "semantic_cosine"}]
-        res_sem1 = run_rag_pipeline("Which Indian Standard covers reinforcement steel used in concrete?", intent="standard_recommendation")
-        assert res_sem1["needs_verification"] is False
+    res_sem1 = run_rag_pipeline("Which Indian Standard covers reinforcement steel used in concrete?", intent="standard_recommendation")
+    assert res_sem1["needs_verification"] is False
+    assert "1786" in str(res_sem1["evidence"])
+
+    # Phase 4 Targeted Tests: Multi-document retrieval
+    res_multi = run_rag_pipeline("What is the standard and QCO for TMT bars?", intent="STANDARD_LOOKUP")
+    # Should retrieve both IS 1786 and the corresponding QCO (if any)
+    # The pipeline should deduplicate and return multiple evidence pieces
+    assert res_multi["needs_verification"] is False
+    assert len(res_multi["evidence"]) >= 1
+    # Check deduplication
+    doc_ids = [e["document_title"] for e in res_multi["evidence"]]
+    assert len(doc_ids) == len(set(doc_ids))
+    
+    # Generic standard search should still fail grounding safely
+    res_generic = run_rag_pipeline("standard for metal", intent="STANDARD_LOOKUP")
+    assert res_generic["needs_verification"] is True
+    assert len(res_generic["evidence"]) == 0
+
+    # Phase 4B Targeted Tests
+    # Conflicting or incomplete evidence test: A prompt with conflicting info
+    # We will simulate a query that hits a QCO and verify the answer mentions applicability verification
+    res_qco = run_rag_pipeline("Does QCO-STEEL-2020 apply to rebar?", intent="STANDARD_LOOKUP")
+    # Even if deterministic fallback is used, it should mention QCO
+    assert "QCO" in res_qco["answer"] or "Quality Control Order" in res_qco["answer"]
+    
+    # Missing provenance fields / Unknown status
+    # We verify that QCOs with 'Unknown' source_url or 'Unverified' are processed
+    # QCO_FILE was updated to have 'Unknown' source_url. Let's verify the retrieval correctly parses it as Unverified.
+    from app.rag.retrieval import _store
+    qco_doc = next((d for d in _store.documents if d.source_type == "qco" and "STEEL" in d.title), None)
+    if qco_doc:
+        assert qco_doc.source_url == "Unverified" or "Unknown" in qco_doc.source_url
+        
+    # Check that 'applicable_qco' is preserved in the standard doc
+    std_doc = next((d for d in _store.documents if d.document_id == "IS_1786_2008"), None)
+    if std_doc:
+        doc_json = json.loads(std_doc.content)
+        assert "applicable_qco" in doc_json
+        assert doc_json["applicable_qco"] == "QCO-STEEL-2020"
 

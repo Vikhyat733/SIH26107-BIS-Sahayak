@@ -1,6 +1,9 @@
 {
   "standard_code": "IS 10500:2012",
   "title": "Drinking Water — Specification (Second Revision)",
+  "version": "Second Revision",
+  "publication_year": 2012,
+  "applicable_qco": "Unknown",
   "category": "Chemical & Environmental Engineering",
   "sti_reference": "STI/10500/Doc-1",
   "parameters": {

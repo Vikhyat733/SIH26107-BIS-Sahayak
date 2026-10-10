@@ -53,7 +53,7 @@ def test_lab_search_fields():
         assert "source" in lab
         assert "source_url" in lab
         assert "verification_status" in lab
-        assert lab["verification_status"] == "BIS LIMS"
+        assert lab["verification_status"].startswith("BIS LIMS")
         assert lab["source"] == "Bureau of Indian Standards"
 
 def test_derecognized_labs():

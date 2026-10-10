@@ -14,6 +14,8 @@ ENTITY_MAPPINGS = {
         {"alias": "deformed steel bar", "type": "specific"},
         {"alias": "high strength deformed steel", "type": "specific"},
         {"alias": "high strength reinforcement bar", "type": "specific"},
+        {"alias": "rebar", "type": "specific"},
+        {"alias": "rebar standard", "type": "specific"},
         {"alias": "reinforcement bar", "type": "broad"},
         {"alias": "reinforcement bars", "type": "broad"},
         {"alias": "steel reinforcement", "type": "broad"},

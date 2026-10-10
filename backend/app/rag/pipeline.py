@@ -47,7 +47,9 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY", language: st
     ranked_docs = rerank(query, candidates)
     
     # 3. Grounding Gate
-    is_grounded = check_grounding(query, ranked_docs, intent)
+    from .grounding import filter_grounded_candidates
+    grounded_docs = filter_grounded_candidates(query, ranked_docs, intent)
+    is_grounded = len(grounded_docs) > 0
     
     # 4. Formulate Answer (Deterministic generation for Phase 1)
     if not is_grounded:
@@ -66,42 +68,58 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY", language: st
             "needs_verification": True
         }
         
-    top_cand = ranked_docs[0]
-    doc = top_cand["document"]
-    
-    logger.info(f"Evidence selected: {doc.document_id}")
+    logger.info(f"Evidence selected: {[d['document'].document_id for d in grounded_docs]}")
     
     # Deterministic Answer Generation (Mocking LLM output for Phase 1) fallback
     def generate_deterministic_fallback():
-        if intent in ("STANDARD_LOOKUP", "standard_recommendation") or doc.source_type == "standard":
-            std = doc.standard_number or doc.document_id
-            title = doc.title
-            product = title.split("—")[0].split("-")[0].strip().lower() if title else query.lower()
-            return f"{std} is identified in the available BIS evidence as covering {product}.\n\nVerify current applicability and regulatory requirements before compliance action."
-        elif doc.source_type == "qco":
-            qco_title = doc.title
-            return f"Found a relevant Quality Control Order (QCO): {qco_title}."
-        else:
-            content = doc.content
-            if content.startswith(doc.title):
-                content = content[len(doc.title):].strip()
-            return content
+        answers = []
+        for cand in grounded_docs:
+            doc = cand["document"]
+            if doc.source_type == "standard":
+                std = doc.standard_number or doc.document_id
+                title = doc.title
+                product = title.split("—")[0].split("-")[0].strip().lower() if title else query.lower()
+                answers.append(f"{std} is identified in the available BIS evidence as covering {product}.")
+            elif doc.source_type == "qco":
+                qco_title = doc.title
+                answers.append(f"Found a relevant Quality Control Order (QCO): {qco_title}.")
+            else:
+                content = doc.content
+                if content.startswith(doc.title):
+                    content = content[len(doc.title):].strip()
+                answers.append(content[:200] + "...")
+        
+        fallback_text = "\n\n".join(answers)
+        if any(d["document"].source_type in ("standard", "qco") for d in grounded_docs):
+            fallback_text += "\n\nVerify current applicability and regulatory requirements before compliance action."
+        
+        return fallback_text
 
     # Build EvidencePacket
     from ..llm import EvidencePacket, EvidenceItem, get_provider
-    ev_item = EvidenceItem(
-        document_id=doc.document_id,
-        title=doc.title,
-        source_authority=doc.authority,
-        excerpt=doc.content[:1500],  # Keep excerpt reasonable
-        relevance_score=top_cand.get("final_score", 0.0),
-        url=doc.source_url or ""
-    )
+    
+    evidence_items = []
+    seen_docs = set()
+    for cand in grounded_docs:
+        doc = cand["document"]
+        if doc.document_id in seen_docs:
+            continue
+        seen_docs.add(doc.document_id)
+        
+        evidence_items.append(EvidenceItem(
+            document_id=doc.document_id,
+            title=doc.title,
+            source_authority=doc.authority,
+            excerpt=doc.content[:1500],  # Keep excerpt reasonable
+            relevance_score=cand.get("rerank_score", cand.get("final_score", 0.0)),
+            url=doc.source_url or ""
+        ))
+        
     packet = EvidencePacket(
         query=query,
         intent=intent,
         language=language,
-        evidence=[ev_item]
+        evidence=evidence_items
     )
 
     provider = get_provider()
@@ -120,20 +138,31 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY", language: st
         answer += generate_deterministic_fallback()
 
     # Shared evidence block
-    evidence = [{
-        "text": doc.content[:500] + "...",
-        "document_title": doc.title,
-        "source": doc.authority,
-        "source_url": doc.source_url,
-        "verification_status": "authoritative",
-        "document_type": doc.source_type
-    }]
-
-    sources = [{
-        "name": doc.authority,
-        "url": doc.source_url,
-        "document": doc.standard_number or doc.title or doc.document_id
-    }]
+    evidence = []
+    sources = []
+    
+    for cand in grounded_docs:
+        doc = cand["document"]
+        
+        # Determine Source Verification Status
+        v_status = "Source Verified" if doc.authority == "Bureau of Indian Standards" else "Unverified Source"
+        if not doc.source_url or doc.source_url == "Unverified":
+            v_status = "Source Identity Unverified"
+            
+        evidence.append({
+            "text": doc.content[:500] + "...",
+            "document_title": doc.title,
+            "source": doc.authority,
+            "source_url": doc.source_url,
+            "verification_status": v_status,
+            "applicability": "Applicability not verified",
+            "document_type": doc.source_type
+        })
+        sources.append({
+            "name": doc.authority,
+            "url": doc.source_url,
+            "document": doc.standard_number or doc.title or doc.document_id
+        })
 
     return {
         "intent": intent,

@@ -34,7 +34,11 @@ def search_labs_by_standard(is_number_val: str, standard_full: str) -> List[Dict
         try:
             with open(cache_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                return data.get("results", [])
+                results = data.get("results", [])
+                ts = data.get("timestamp", "unknown time")
+                for r in results:
+                    r["verification_status"] = f"BIS LIMS (Cached: {ts})"
+                return results
         except Exception as e:
             logger.error(f"Failed to read cache {cache_path}: {e}")
             
@@ -45,7 +49,7 @@ def search_labs_by_standard(is_number_val: str, standard_full: str) -> List[Dict
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         }
-        with httpx.Client(timeout=30.0, verify=False, headers=headers) as client:
+        with httpx.Client(timeout=30.0, headers=headers) as client:
             resp = client.get(url)
             resp.raise_for_status()
             content = resp.text
@@ -72,7 +76,11 @@ def search_labs_by_standard(is_number_val: str, standard_full: str) -> List[Dict
             try:
                 with open(cache_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                    return data.get("results", [])
+                    results = data.get("results", [])
+                    ts = data.get("timestamp", "unknown time")
+                    for r in results:
+                        r["verification_status"] = f"BIS LIMS (Stale Cache: {ts})"
+                    return results
             except Exception:
                 pass
         return []

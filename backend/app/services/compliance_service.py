@@ -129,6 +129,9 @@ def analyze_document(filename: str, file_content: bytes, standard: Optional[str]
         except Exception:
             return _review_result(filename, ext, standard, product, "Required value could not be reliably extracted from the submitted document (invalid JSON).")
     elif ext == 'pdf':
+        if not file_content.startswith(b'%PDF'):
+             return _review_result(filename, ext, standard, product, "Invalid PDF format. The uploaded file does not appear to be a readable PDF.")
+             
         if not PdfReader:
             return _review_result(filename, ext, standard, product, "PDF extraction library not available.")
         try:

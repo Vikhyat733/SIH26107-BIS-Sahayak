@@ -28,8 +28,22 @@ async def audit(request: Request):
         if not file:
             raise HTTPException(status_code=400, detail="No file provided")
         
-        file_content = await file.read()
-        return analyze_document(file.filename, file_content, standard, product)
+        MAX_FILE_SIZE = 5 * 1024 * 1024 # 5 MB
+        file_content = bytearray()
+        chunk_size = 1024 * 1024
+        try:
+            while True:
+                chunk = await file.read(chunk_size)
+                if not chunk:
+                    break
+                file_content.extend(chunk)
+                if len(file_content) > MAX_FILE_SIZE:
+                    raise HTTPException(status_code=413, detail="File too large. Maximum size is 5MB.")
+        finally:
+            await file.close()
+            
+        file_bytes = bytes(file_content)
+        return analyze_document(file.filename, file_bytes, standard, product)
     else:
         raise HTTPException(status_code=415, detail="Unsupported media type")
 
