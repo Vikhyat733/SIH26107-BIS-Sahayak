@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Search, ShieldCheck, FlaskConical, BadgeCheck, FileCheck2, Send, Languages, AlertTriangle } from 'lucide-react';
+import { Search, ShieldCheck, FlaskConical, BadgeCheck, FileCheck2, Send, Languages, AlertTriangle, ExternalLink } from 'lucide-react';
+import { parseEvidence } from './utils/evidenceMapping';
 
 const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
@@ -635,21 +636,81 @@ export default function App() {
             <div className="evidence-section">
               <br/>
               <h3>Evidence</h3>
-              {result.evidence && result.evidence.length > 0 ? result.evidence.map((x, i: number) => (
-                <div key={i} style={{marginBottom: '10px'}}>
-                  <div>────────────────────────</div>
-                  <div style={{marginTop: '10px', fontStyle: 'italic', paddingLeft: '10px', borderLeft: '3px solid #ccc'}}>"{x.text}"</div>
-                  <div style={{marginTop: '10px'}}><strong>Source:</strong><br/>{x.source}</div>
-                  <div style={{marginTop: '10px'}}><strong>Document:</strong><br/>{x.document_title || x.title || x.id}</div>
-                  {x.section && <div style={{marginTop: '10px'}}><strong>Section:</strong><br/>{x.section}</div>}
-                  {x.source_url && (
-                    <div style={{marginTop: '10px'}}>
-                      <a href={x.source_url} target="_blank" rel="noreferrer">[View source]</a>
+              {result.evidence && result.evidence.length > 0 ? result.evidence.map((x, i: number) => {
+                const {
+                  standardCode,
+                  docTitle,
+                  sourceOrg,
+                  sourceUrl,
+                  verificationStatus,
+                  excerpts
+                } = parseEvidence(x, result.sources, i);
+
+                return (
+                  <div key={i} style={{
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '8px',
+                      padding: '16px',
+                      marginBottom: '16px',
+                      backgroundColor: '#f8fafc'
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', gap: '16px' }}>
+                      <div>
+                        <h4 style={{ margin: '0 0 4px 0', color: '#0f172a', fontSize: '1.1em' }}>{standardCode}</h4>
+                        {docTitle && docTitle !== standardCode && (
+                          <div style={{ color: '#334155', fontSize: '0.95em', fontWeight: 500, lineHeight: 1.4 }}>{docTitle}</div>
+                        )}
+                      </div>
+                      {verificationStatus && (
+                        <span style={{
+                          backgroundColor: verificationStatus === 'authoritative' ? '#dcfce7' : '#f1f5f9',
+                          color: verificationStatus === 'authoritative' ? '#166534' : '#475569',
+                          padding: '4px 8px',
+                          borderRadius: '999px',
+                          fontSize: '0.75em',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          {verificationStatus}
+                        </span>
+                      )}
                     </div>
-                  )}
-                  <div style={{marginTop: '10px'}}>────────────────────────</div>
-                </div>
-              )) : (
+                    
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '0.85em', color: '#64748b', marginBottom: '12px' }}>
+                      <div><strong>Source:</strong> {sourceOrg}</div>
+                      {sourceUrl && (
+                        <div>
+                          <a href={sourceUrl} target="_blank" rel="noreferrer" style={{ color: '#2563eb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <ExternalLink size={14} /> View source
+                          </a>
+                        </div>
+                      )}
+                    </div>
+
+                    {excerpts.length > 0 && (
+                      <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '12px' }}>
+                        <strong style={{ fontSize: '0.85em', color: '#475569', display: 'block', marginBottom: '8px' }}>Evidence Excerpt(s)</strong>
+                        {excerpts.map((excerpt: any, j: number) => (
+                          <div key={j} style={{ 
+                            marginTop: j > 0 ? '8px' : '0',
+                            fontStyle: 'italic', 
+                            paddingLeft: '12px', 
+                            borderLeft: '3px solid #cbd5e1',
+                            color: '#334155',
+                            fontSize: '0.9em',
+                            lineHeight: '1.5'
+                          }}>
+                            "{excerpt.text}"
+                            {excerpt.section && <div style={{ fontSize: '0.85em', color: '#64748b', marginTop: '4px', fontStyle: 'normal' }}>Section: {excerpt.section}</div>}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }) : (
                 <div className="warning-box" style={{marginTop: '10px'}}>
                    <p>Answer generated from available BIS information, but a directly attributable evidence excerpt was not available.</p>
                 </div>

@@ -29,7 +29,7 @@ def _load_env_safely():
 class GeminiProvider(LLMProvider):
     def __init__(self):
         self.api_key = os.getenv("GEMINI_API_KEY")
-        self.model = "gemini-3.5-flash"
+        self.model = "gemini-3.8-flash"
         self.url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
 
     def generate(self, packet: EvidencePacket) -> Optional[GeneratedAnswer]:

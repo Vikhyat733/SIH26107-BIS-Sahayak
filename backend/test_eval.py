@@ -1,4 +1,6 @@
 import json
+from app.llm import provider
+provider.get_provider = lambda: None
 from app.services.assistant_service import answer
 from app.rag.retrieval import retrieve_documents
 from app.rag.reranking import rerank
