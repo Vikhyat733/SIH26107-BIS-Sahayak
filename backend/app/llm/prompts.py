@@ -36,4 +36,6 @@ def build_prompt(packet: EvidencePacket) -> str:
         prompt += f"[{ev.document_id}]\nTitle: {ev.title}\nAuthority: {ev.source_authority}\nExcerpt: {ev.excerpt}\n\n"
     
     prompt += "Based ONLY on the evidence provided above, answer the query."
+    if packet.language and packet.language.lower() != "en":
+        prompt += f"\n\nCRITICAL INSTRUCTION: You MUST translate your final answer, caveats, and next_steps to the following language code: {packet.language}."
     return prompt

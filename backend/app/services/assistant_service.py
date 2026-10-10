@@ -31,7 +31,7 @@ def answer(query: str, language: str = "en") -> Dict[str, Any]:
     # 2. Routing based on detected intent
     if intent in ("standard_recommendation", "STANDARD_LOOKUP"): 
         # Pass the pre-processed plan to the pipeline or just the original query as baseline
-        return run_rag_pipeline(query, intent=intent)
+        return run_rag_pipeline(query, intent=intent, language=language)
 
     if intent == "CERTIFICATION_QUERY":
         return get_certification_info(query)
@@ -75,4 +75,4 @@ def answer(query: str, language: str = "en") -> Dict[str, Any]:
 
     # 3. Default routing (General queries, QCO, etc.)
     # QCO_QUERY and BIS_GENERAL_QUERY route to RAG
-    return run_rag_pipeline(query, intent=intent)
+    return run_rag_pipeline(query, intent=intent, language=language)

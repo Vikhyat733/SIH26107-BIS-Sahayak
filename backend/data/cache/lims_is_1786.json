@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T17:58:16.192409",
+  "timestamp": "2026-10-10T14:34:58.194405",
   "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
   "results": [
     {
@@ -408,21 +408,6 @@
       "verification_status": "BIS LIMS"
     },
     {
-      "name": "Kailtech Test and Research Centre Pvt. Ltd., Indore8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-      "lab_code": "8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-      "address": "",
-      "city": "2027--",
-      "state": "",
-      "standard": "IS 1786 (2008)",
-      "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
-      "scope": "All",
-      "testing_charges": "21000 View breakup -",
-      "validity_date": "18 Dec, 2027",
-      "source": "Bureau of Indian Standards",
-      "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
-      "verification_status": "BIS LIMS"
-    },
-    {
       "name": "MICRO, SMALL & MEDIUM ENTERPRISES - TESTING CENTRE (MSME), KOLKATA5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
       "lab_code": "5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
       "address": "",
@@ -448,6 +433,21 @@
       "scope": "-",
       "testing_charges": "35500 View breakup -",
       "validity_date": "17 Jun, 2027",
+      "source": "Bureau of Indian Standards",
+      "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
+      "verification_status": "BIS LIMS"
+    },
+    {
+      "name": "S.B.Steels Company, Bally5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+      "lab_code": "5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+      "address": "",
+      "city": "2027--",
+      "state": "",
+      "standard": "IS 1786 (2008)",
+      "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
+      "scope": "-",
+      "testing_charges": "38750.00 View breakup -",
+      "validity_date": "06 Sep, 2027",
       "source": "Bureau of Indian Standards",
       "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
       "verification_status": "BIS LIMS"

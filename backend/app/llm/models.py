@@ -12,6 +12,7 @@ class EvidenceItem(BaseModel):
 class EvidencePacket(BaseModel):
     query: str
     intent: str
+    language: str = "en"
     entities: List[str] = Field(default_factory=list)
     identifiers: List[str] = Field(default_factory=list)
     evidence: List[EvidenceItem] = Field(default_factory=list)

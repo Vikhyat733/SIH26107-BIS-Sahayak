@@ -2,7 +2,7 @@
   {
     "query": "Which BIS standard applies to TMT reinforcement bars?",
     "intent": "standard_recommendation",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -32,44 +32,35 @@
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "bis_care",
-      "bis_product_certification",
-      "bis_certification",
       "bis_what_is",
       "bis_licensing",
       "testing_labs",
+      "bis_care",
+      "bis_product_certification",
+      "bis_certification",
       "standards_search",
       "qco_overview"
     ],
     "rerank_scores": [
-      0.4099,
-      0.2744,
-      0.2718,
-      0.2599,
-      0.2545,
+      0.3847,
+      0.0251,
       0.0162,
       0.0158,
       0.0158,
+      0.0157,
+      0.0156,
+      0.0059,
       0.0049,
       0.0046
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -84,62 +75,41 @@
   {
     "query": "What standard is used for high strength deformed steel bars?",
     "intent": "standard_recommendation",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "qco_0",
       "IS_1786_2008",
       "hallmarking",
-      "qco_2",
-      "qco_4",
-      "qco_1",
-      "standards_search"
+      "qco_2"
     ],
     "bm25_scores": [
       12.8103,
       4.854,
       3.7992,
-      1.8454,
-      0.0,
-      0.0,
-      0.0
+      1.8454
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "qco_4",
-      "qco_1",
-      "standards_search",
       "hallmarking",
       "qco_2"
     ],
     "rerank_scores": [
-      0.4805,
-      0.3054,
-      0.175,
-      0.1695,
-      0.1663,
+      0.4246,
+      0.046,
       0.0216,
       0.0135
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -159,31 +129,19 @@
     "needs_verification": true,
     "bm25_candidates": [
       "qco_0",
-      "IS_1786_2008",
-      "qco_4",
-      "qco_1",
-      "isi_mark"
+      "IS_1786_2008"
     ],
     "bm25_scores": [
       4.5998,
-      2.5773,
-      0.0,
-      0.0,
-      0.0
+      2.5773
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "qco_4",
-      "qco_1",
-      "isi_mark"
+      "qco_0"
     ],
     "rerank_scores": [
-      0.343,
-      0.2593,
-      0.1727,
-      0.1684,
-      0.1617
+      0.177,
+      0.024
     ],
     "grounding_passed": false,
     "evidence": [],
@@ -192,62 +150,33 @@
   {
     "query": "What is IS 1786?",
     "intent": "STANDARD_LOOKUP",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "hallmarking",
-      "isi_mark",
-      "qco_2",
-      "IS_10500_2012",
-      "qco_4"
+      "qco_0"
     ],
     "bm25_scores": [
       4.4786,
-      1.8688,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      1.8688
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "hallmarking",
-      "isi_mark",
-      "qco_2",
-      "IS_10500_2012",
-      "qco_4",
       "qco_0"
     ],
     "rerank_scores": [
       0.4736,
-      0.1668,
-      0.1553,
-      0.142,
-      0.141,
-      0.1387,
       0.0136
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -262,62 +191,33 @@
   {
     "query": "Tell me about IS 1786:2008.",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "hallmarking",
-      "qco_2",
-      "isi_mark",
-      "qco_3",
-      "qco_4"
+      "qco_0"
     ],
     "bm25_scores": [
       5.0074,
-      3.7376,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      3.7376
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "hallmarking",
-      "qco_2",
-      "isi_mark",
-      "qco_3",
-      "qco_4",
       "qco_0"
     ],
     "rerank_scores": [
       0.475,
-      0.1551,
-      0.1492,
-      0.1485,
-      0.1464,
-      0.1463,
       0.0214
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -332,120 +232,51 @@
   {
     "query": "TMT bar standard",
     "intent": "standard_recommendation",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
-    "confidence": 0.85,
-    "needs_verification": false,
-    "bm25_candidates": [
-      "IS_1786_2008",
-      "IS_10500_2012",
-      "qco_0",
-      "qco_4",
-      "standards_search"
-    ],
-    "bm25_scores": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "reranked_candidates": [
-      "IS_1786_2008",
-      "IS_10500_2012",
-      "qco_0",
-      "qco_4",
-      "standards_search"
-    ],
-    "rerank_scores": [
-      0.3021,
-      0.1921,
-      0.1909,
-      0.1901,
-      0.1844
-    ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
-        "document_type": "standard"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "IS 1786:2008"
-      }
-    ]
+    "e2e_answer": "No sufficiently supported BIS standard was found for this product in the current knowledge base.\n\nTry describing the product in more detail.",
+    "confidence": 0.0,
+    "needs_verification": true,
+    "bm25_candidates": [],
+    "bm25_scores": [],
+    "reranked_candidates": [],
+    "rerank_scores": [],
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "TMT reinforcement steel standard",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "qco_0",
       "qco_2",
-      "IS_1786_2008",
-      "qco_4",
-      "qco_1",
-      "isi_mark"
+      "IS_1786_2008"
     ],
     "bm25_scores": [
       5.4794,
       1.8454,
-      1.7565,
-      0.0,
-      0.0,
-      0.0
+      1.7565
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "qco_4",
-      "qco_1",
-      "isi_mark",
       "qco_2"
     ],
     "rerank_scores": [
-      0.417,
-      0.3031,
-      0.1894,
-      0.181,
-      0.1788,
+      0.388,
+      0.0386,
       0.0135
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -460,9 +291,9 @@
   {
     "query": "rebar BIS standard",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "The Bureau of Indian Standards (BIS) is the National Standard Body of India established under the BIS Act 2016 for the harmonious development of the activities of standardization, marking and quality certification of goods.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "This question could not be answered reliably from the current knowledge base.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
       "bis_what_is",
       "bis_certification",
@@ -473,9 +304,7 @@
       "standards_search",
       "qco_overview",
       "qco_1",
-      "qco_0",
-      "IS_1786_2008",
-      "qco_4"
+      "qco_0"
     ],
     "bm25_scores": [
       0.7025,
@@ -487,174 +316,100 @@
       0.5401,
       0.5114,
       0.4803,
-      0.4602,
-      0.0,
-      0.0
+      0.4602
     ],
     "reranked_candidates": [
       "bis_what_is",
-      "bis_care",
-      "standards_search",
-      "IS_1786_2008",
-      "qco_4",
       "bis_licensing",
       "testing_labs",
+      "bis_care",
       "bis_product_certification",
       "bis_certification",
+      "standards_search",
       "qco_overview",
       "qco_1",
       "qco_0"
     ],
     "rerank_scores": [
-      0.2748,
-      0.2679,
-      0.2512,
-      0.2006,
-      0.198,
+      0.0228,
       0.0225,
       0.0225,
+      0.0224,
       0.0223,
       0.0059,
+      0.0049,
       0.0046,
       0.0044,
       0.0042
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "text": "The Bureau of Indian Standards (BIS) is the National Standard Body of India established under the BIS Act 2016 for the harmonious development of the activities of standardization, marking and quality certification of goods.",
-        "document_title": "What is BIS?",
-        "section": "Overview",
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "authoritative"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "What is BIS?"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "deformed steel reinforcement standard",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "This question could not be answered reliably from the current knowledge base.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
       "qco_0",
       "IS_1786_2008",
-      "qco_2",
-      "qco_1",
-      "qco_4",
-      "IS_10500_2012"
+      "qco_2"
     ],
     "bm25_scores": [
       7.3482,
       2.7142,
-      1.8454,
-      0.0,
-      0.0,
-      0.0
+      1.8454
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "qco_1",
-      "qco_4",
-      "IS_10500_2012",
       "qco_2"
     ],
     "rerank_scores": [
-      0.4006,
-      0.3087,
-      0.1849,
-      0.1833,
-      0.1751,
+      0.1951,
+      0.0423,
       0.0135
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
-        "document_type": "standard"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "IS 1786:2008"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "high strength reinforcement bar specification",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "qco_0",
       "IS_1786_2008",
-      "IS_10500_2012",
-      "qco_4",
-      "qco_1"
+      "IS_10500_2012"
     ],
     "bm25_scores": [
       6.4686,
       3.6263,
-      1.016,
-      0.0,
-      0.0
+      1.016
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "IS_10500_2012",
-      "qco_4",
-      "qco_1"
+      "IS_10500_2012"
     ],
     "rerank_scores": [
-      0.4449,
-      0.2726,
-      0.2407,
-      0.1761,
-      0.1683
+      0.411,
+      0.0282,
+      0.0184
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -669,7 +424,7 @@
   {
     "query": "What is BIS certification?",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "BIS Product Certification Schemes provide third-party assurance of product quality, safety, and reliability. BIS certification is basically voluntary in nature. However, the Government can make compliance mandatory for specified products through Quality Control Orders (QCOs). For products covered by applicable QCOs, the relevant BIS certification and Standard Mark requirements apply according to the order.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nBIS Product Certification Schemes provide third-party assurance of product quality, safety, and reliability. BIS certification is basically voluntary in nature. However, the Government can make compliance mandatory for specified products through Quality Control Orders (QCOs). For products covered by applicable QCOs, the relevant BIS certification and Standard Mark requirements apply according to the order.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -698,24 +453,24 @@
     ],
     "reranked_candidates": [
       "bis_certification",
-      "bis_product_certification",
       "bis_what_is",
-      "bis_care",
-      "bis_licensing",
+      "bis_product_certification",
       "certification_process_overview",
+      "bis_licensing",
       "testing_labs",
+      "bis_care",
       "qco_3",
       "qco_0",
       "standards_search"
     ],
     "rerank_scores": [
-      0.4287,
-      0.3485,
-      0.3418,
-      0.307,
-      0.303,
+      0.3809,
+      0.0534,
+      0.043,
       0.0271,
       0.0183,
+      0.0183,
+      0.0182,
       0.0138,
       0.0112,
       0.0049
@@ -723,12 +478,12 @@
     "grounding_passed": true,
     "evidence": [
       {
-        "text": "BIS Product Certification Schemes provide third-party assurance of product quality, safety, and reliability. BIS certification is basically voluntary in nature. However, the Government can make compliance mandatory for specified products through Quality Control Orders (QCOs). For products covered by applicable QCOs, the relevant BIS certification and Standard Mark requirements apply according to the order.",
+        "text": "Product Certification Overview BIS Product Certification Schemes provide third-party assurance of product quality, safety, and reliability. BIS certification is basically voluntary in nature. However, the Government can make compliance mandatory for specified products through Quality Control Orders (QCOs). For products covered by applicable QCOs, the relevant BIS certification and Standard Mark requirements apply according to the order....",
         "document_title": "Product Certification Overview",
-        "section": "Overview of Certification",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/product-certification/",
-        "verification_status": "authoritative"
+        "verification_status": "authoritative",
+        "document_type": "general"
       }
     ],
     "sources": [
@@ -742,7 +497,7 @@
   {
     "query": "What is a QCO?",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nA Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -751,8 +506,7 @@
       "qco_4",
       "qco_3",
       "qco_1",
-      "qco_0",
-      "bis_certification"
+      "qco_0"
     ],
     "bm25_scores": [
       1.605,
@@ -760,36 +514,33 @@
       1.1701,
       1.0992,
       1.0484,
-      0.9884,
-      0.0
+      0.9884
     ],
     "reranked_candidates": [
       "qco_overview",
-      "qco_4",
       "qco_2",
-      "qco_1",
-      "bis_certification",
+      "qco_4",
       "qco_3",
+      "qco_1",
       "qco_0"
     ],
     "rerank_scores": [
-      0.4096,
-      0.2524,
-      0.2507,
-      0.2475,
-      0.1906,
+      0.3621,
+      0.0095,
+      0.0095,
       0.009,
+      0.0087,
       0.0083
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "text": "A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
+        "text": "Quality Control Orders A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS....",
         "document_title": "Quality Control Orders",
-        "section": "Overview",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/quality-control-orders/",
-        "verification_status": "authoritative"
+        "verification_status": "authoritative",
+        "document_type": "general"
       }
     ],
     "sources": [
@@ -803,7 +554,7 @@
   {
     "query": "What is a Quality Control Order?",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nA Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -834,35 +585,35 @@
       "qco_overview",
       "qco_2",
       "qco_4",
-      "qco_1",
-      "bis_certification",
       "qco_3",
+      "qco_1",
       "qco_0",
       "bis_what_is",
+      "bis_certification",
       "bis_licensing",
       "bis_product_certification"
     ],
     "rerank_scores": [
-      0.435,
-      0.2982,
-      0.2962,
-      0.284,
-      0.2661,
+      0.3922,
+      0.0468,
+      0.0468,
       0.0461,
+      0.0456,
       0.045,
       0.0276,
+      0.0205,
       0.0152,
       0.0075
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "text": "A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS.",
+        "text": "Quality Control Orders A Quality Control Order (QCO) is issued by the Government of India making it mandatory for specific products to conform to the relevant Indian Standard and bear the Standard Mark (ISI Mark) under a license from BIS....",
         "document_title": "Quality Control Orders",
-        "section": "Overview",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/quality-control-orders/",
-        "verification_status": "authoritative"
+        "verification_status": "authoritative",
+        "document_type": "general"
       }
     ],
     "sources": [
@@ -889,9 +640,7 @@
       "qco_overview",
       "qco_2",
       "qco_1",
-      "qco_4",
-      "bis_care",
-      "bis_licensing"
+      "qco_4"
     ],
     "bm25_scores": [
       4.195,
@@ -903,16 +652,12 @@
       1.9023,
       1.4119,
       1.3888,
-      1.3868,
-      0.0,
-      0.0
+      1.3868
     ],
     "reranked_candidates": [
       "bis_certification",
       "bis_product_certification",
       "bis_what_is",
-      "bis_care",
-      "bis_licensing",
       "certification_process_overview",
       "qco_0",
       "qco_3",
@@ -922,11 +667,9 @@
       "qco_4"
     ],
     "rerank_scores": [
-      0.4456,
-      0.341,
-      0.2998,
-      0.2327,
-      0.2264,
+      0.3928,
+      0.048,
+      0.0359,
       0.0246,
       0.0185,
       0.0182,
@@ -970,25 +713,25 @@
       0.4602
     ],
     "reranked_candidates": [
-      "bis_product_certification",
       "bis_what_is",
+      "bis_product_certification",
       "bis_certification",
-      "bis_care",
-      "standards_search",
       "bis_licensing",
       "testing_labs",
+      "bis_care",
+      "standards_search",
       "qco_overview",
       "qco_1",
       "qco_0"
     ],
     "rerank_scores": [
-      0.2689,
-      0.2643,
-      0.2617,
-      0.2569,
-      0.2393,
+      0.0262,
+      0.0256,
+      0.0159,
       0.0158,
       0.0158,
+      0.0157,
+      0.0049,
       0.0046,
       0.0044,
       0.0042
@@ -1013,9 +756,7 @@
       "bis_what_is",
       "bis_licensing",
       "testing_labs",
-      "bis_care",
-      "bis_product_certification",
-      "standards_search"
+      "bis_care"
     ],
     "bm25_scores": [
       5.7822,
@@ -1027,35 +768,29 @@
       0.7025,
       0.658,
       0.658,
-      0.6452,
-      0.0,
-      0.0
+      0.6452
     ],
     "reranked_candidates": [
-      "bis_certification",
-      "bis_what_is",
-      "bis_care",
-      "bis_product_certification",
-      "standards_search",
       "isi_mark",
+      "bis_certification",
       "qco_0",
+      "bis_what_is",
       "hallmarking",
       "bis_licensing",
       "testing_labs",
+      "bis_care",
       "qco_3",
       "IS_1786_2008"
     ],
     "rerank_scores": [
-      0.2996,
-      0.2838,
-      0.2796,
-      0.238,
-      0.2071,
       0.0268,
+      0.0262,
       0.0179,
+      0.0162,
       0.0159,
       0.0158,
       0.0158,
+      0.0157,
       0.0122,
       0.0065
     ],
@@ -1066,9 +801,9 @@
   {
     "query": "Give me the BIS standard for an unsupported fictional product.",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "The BIS Product Certification Scheme aims at providing third party assurance of quality, safety and reliability of products to the customer. The presence of the ISI Certification Mark on a product is an assurance of conformity to the specifications.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "This question could not be answered reliably from the current knowledge base.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
       "bis_what_is",
       "bis_certification",
@@ -1079,8 +814,7 @@
       "standards_search",
       "qco_overview",
       "qco_1",
-      "qco_0",
-      "qco_4"
+      "qco_0"
     ],
     "bm25_scores": [
       0.7025,
@@ -1092,53 +826,35 @@
       0.5401,
       0.5114,
       0.4803,
-      0.4602,
-      0.0
+      0.4602
     ],
     "reranked_candidates": [
       "bis_product_certification",
-      "bis_care",
-      "bis_certification",
       "bis_what_is",
-      "qco_4",
+      "bis_certification",
       "bis_licensing",
       "testing_labs",
+      "bis_care",
       "standards_search",
       "qco_overview",
       "qco_1",
       "qco_0"
     ],
     "rerank_scores": [
-      0.2714,
-      0.2691,
-      0.2671,
-      0.2601,
-      0.1948,
+      0.0256,
+      0.0162,
+      0.0159,
       0.0158,
       0.0158,
+      0.0157,
       0.0049,
       0.0046,
       0.0044,
       0.0042
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "text": "The BIS Product Certification Scheme aims at providing third party assurance of quality, safety and reliability of products to the customer. The presence of the ISI Certification Mark on a product is an assurance of conformity to the specifications.",
-        "document_title": "BIS Product Certification",
-        "section": "Overview",
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "authoritative"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "BIS Product Certification"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "steel standard",
@@ -1149,33 +865,21 @@
     "bm25_candidates": [
       "qco_0",
       "qco_2",
-      "IS_1786_2008",
-      "isi_mark",
-      "qco_4",
-      "qco_1"
+      "IS_1786_2008"
     ],
     "bm25_scores": [
       3.6106,
       1.8454,
-      0.7988,
-      0.0,
-      0.0,
-      0.0
+      0.7988
     ],
     "reranked_candidates": [
       "qco_0",
       "IS_1786_2008",
-      "isi_mark",
-      "qco_4",
-      "qco_1",
       "qco_2"
     ],
     "rerank_scores": [
-      0.3131,
-      0.3013,
-      0.1943,
-      0.1928,
-      0.1911,
+      0.046,
+      0.0319,
       0.0135
     ],
     "grounding_passed": false,
@@ -1215,25 +919,25 @@
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "bis_licensing",
       "bis_what_is",
-      "bis_certification",
+      "bis_licensing",
       "testing_labs",
       "bis_care",
       "bis_product_certification",
       "qco_2",
+      "bis_certification",
       "standards_search"
     ],
     "rerank_scores": [
-      0.3033,
-      0.2939,
-      0.2808,
-      0.2715,
-      0.2548,
+      0.0414,
+      0.0391,
+      0.0228,
+      0.0225,
       0.0225,
       0.0224,
       0.0223,
       0.0135,
+      0.0059,
       0.0049
     ],
     "grounding_passed": false,
@@ -1252,9 +956,7 @@
       "certification_process_overview",
       "bis_what_is",
       "qco_3",
-      "qco_0",
-      "isi_mark",
-      "IS_10500_2012"
+      "qco_0"
     ],
     "bm25_scores": [
       2.2329,
@@ -1262,79 +964,54 @@
       2.0712,
       1.6266,
       1.5592,
-      0.9884,
-      0.0,
-      0.0
+      0.9884
     ],
     "reranked_candidates": [
       "bis_certification",
       "bis_product_certification",
       "certification_process_overview",
-      "isi_mark",
-      "IS_10500_2012",
       "bis_what_is",
       "qco_3",
       "qco_0"
     ],
     "rerank_scores": [
-      0.3183,
-      0.3098,
-      0.3012,
-      0.2002,
-      0.1985,
+      0.0404,
+      0.0402,
+      0.0271,
       0.0123,
       0.0119,
       0.0083
     ],
-    "grounding_passed": true,
+    "grounding_passed": false,
     "evidence": [],
     "sources": []
   },
   {
     "query": "Explain IS 10500.",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 10500:2012 is identified in the available BIS evidence as covering drinking water.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 10500:2012 is identified in the available BIS evidence as covering drinking water.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
-      "IS_10500_2012",
-      "qco_1",
-      "qco_4",
-      "hallmarking",
-      "standards_search"
+      "IS_10500_2012"
     ],
     "bm25_scores": [
-      4.7635,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      4.7635
     ],
     "reranked_candidates": [
-      "IS_10500_2012",
-      "qco_1",
-      "qco_4",
-      "hallmarking",
-      "standards_search"
+      "IS_10500_2012"
     ],
     "rerank_scores": [
-      0.7056,
-      0.1629,
-      0.1617,
-      0.1575,
-      0.1549
+      0.4744
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 10500:2012",
-        "title": "Drinking Water \u2014 Specification (Second Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [],
+        "text": "{\"standard_code\": \"IS 10500:2012\", \"title\": \"Drinking Water \u2014 Specification (Second Revision)\", \"category\": \"Chemical & Environmental Engineering\", \"sti_reference\": \"STI/10500/Doc-1\", \"parameters\": {\"ph_value\": {\"name\": \"pH Value\", \"acceptable_limit_min\": 6.5, \"acceptable_limit_max\": 8.5, \"permissible_limit_min\": 6.5, \"permissible_limit_max\": 8.5, \"unit\": \"pH units\", \"clause\": \"IS 10500 Table 1 Sl 1\", \"test_method\": \"IS 3025 (Part 11)\"}, \"turbidity\": {\"name\": \"Turbidity\", \"acceptable_limit_min\":...",
+        "document_title": "Drinking Water \u2014 Specification (Second Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -1349,62 +1026,33 @@
   {
     "query": "What does IS 1786 cover?",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "hallmarking",
-      "isi_mark",
-      "qco_2",
-      "IS_10500_2012",
-      "standards_search"
+      "qco_0"
     ],
     "bm25_scores": [
       4.4786,
-      1.8688,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      1.8688
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "hallmarking",
-      "isi_mark",
-      "qco_2",
-      "IS_10500_2012",
-      "standards_search",
       "qco_0"
     ],
     "rerank_scores": [
       0.4736,
-      0.169,
-      0.159,
-      0.1551,
-      0.1524,
-      0.151,
       0.0136
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -1419,54 +1067,33 @@
   {
     "query": "IS 1786 reinforcement.",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "qco_4",
-      "qco_2",
-      "isi_mark"
+      "qco_0"
     ],
     "bm25_scores": [
       5.4363,
-      3.7376,
-      0.0,
-      0.0,
-      0.0
+      3.7376
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "qco_4",
-      "qco_2",
-      "isi_mark"
+      "qco_0"
     ],
     "rerank_scores": [
-      0.7251,
-      0.2444,
-      0.1657,
-      0.1637,
-      0.1614
+      0.4927,
+      0.0214
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -1481,48 +1108,33 @@
   {
     "query": "IS 10500 drinking water.",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 10500:2012 is identified in the available BIS evidence as covering drinking water.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 10500:2012 is identified in the available BIS evidence as covering drinking water.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "IS_10500_2012",
-      "qco_2",
-      "qco_1",
-      "qco_4",
-      "qco_3"
+      "qco_2"
     ],
     "bm25_scores": [
       6.7956,
-      6.0451,
-      0.0,
-      0.0,
-      0.0
+      6.0451
     ],
     "reranked_candidates": [
       "IS_10500_2012",
-      "qco_2",
-      "qco_1",
-      "qco_4",
-      "qco_3"
+      "qco_2"
     ],
     "rerank_scores": [
-      0.8706,
-      0.2815,
-      0.1533,
-      0.152,
-      0.1498
+      0.8538,
+      0.0399
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 10500:2012",
-        "title": "Drinking Water \u2014 Specification (Second Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [],
+        "text": "{\"standard_code\": \"IS 10500:2012\", \"title\": \"Drinking Water \u2014 Specification (Second Revision)\", \"category\": \"Chemical & Environmental Engineering\", \"sti_reference\": \"STI/10500/Doc-1\", \"parameters\": {\"ph_value\": {\"name\": \"pH Value\", \"acceptable_limit_min\": 6.5, \"acceptable_limit_max\": 8.5, \"permissible_limit_min\": 6.5, \"permissible_limit_max\": 8.5, \"unit\": \"pH units\", \"clause\": \"IS 10500 Table 1 Sl 1\", \"test_method\": \"IS 3025 (Part 11)\"}, \"turbidity\": {\"name\": \"Turbidity\", \"acceptable_limit_min\":...",
+        "document_title": "Drinking Water \u2014 Specification (Second Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -1547,11 +1159,7 @@
       "certification_process_overview",
       "bis_licensing",
       "qco_3",
-      "qco_1",
-      "isi_mark",
-      "standards_search",
-      "IS_10500_2012",
-      "qco_4"
+      "qco_1"
     ],
     "bm25_scores": [
       5.217,
@@ -1560,19 +1168,11 @@
       1.4621,
       1.4553,
       1.3512,
-      0.9085,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0.9085
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "testing_labs",
-      "isi_mark",
-      "standards_search",
-      "IS_10500_2012",
-      "qco_4",
       "qco_0",
       "certification_process_overview",
       "bis_licensing",
@@ -1581,11 +1181,7 @@
     ],
     "rerank_scores": [
       0.4855,
-      0.263,
-      0.1868,
-      0.1783,
-      0.1781,
-      0.1762,
+      0.0232,
       0.0176,
       0.0113,
       0.0113,
@@ -2000,21 +1596,6 @@
         "verification_status": "BIS LIMS"
       },
       {
-        "name": "Kailtech Test and Research Centre Pvt. Ltd., Indore8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-        "lab_code": "8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-        "address": "",
-        "city": "2027--",
-        "state": "",
-        "standard": "IS 1786 (2008)",
-        "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
-        "scope": "All",
-        "testing_charges": "21000 View breakup -",
-        "validity_date": "18 Dec, 2027",
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
-        "verification_status": "BIS LIMS"
-      },
-      {
         "name": "MICRO, SMALL & MEDIUM ENTERPRISES - TESTING CENTRE (MSME), KOLKATA5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
         "lab_code": "5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
         "address": "",
@@ -2043,6 +1624,21 @@
         "source": "Bureau of Indian Standards",
         "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
         "verification_status": "BIS LIMS"
+      },
+      {
+        "name": "S.B.Steels Company, Bally5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+        "lab_code": "5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+        "address": "",
+        "city": "2027--",
+        "state": "",
+        "standard": "IS 1786 (2008)",
+        "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
+        "scope": "-",
+        "testing_charges": "38750.00 View breakup -",
+        "validity_date": "06 Sep, 2027",
+        "source": "Bureau of Indian Standards",
+        "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
+        "verification_status": "BIS LIMS"
       }
     ],
     "sources": []
@@ -2060,10 +1656,7 @@
       "certification_process_overview",
       "bis_licensing",
       "qco_3",
-      "qco_1",
-      "isi_mark",
-      "standards_search",
-      "qco_4"
+      "qco_1"
     ],
     "bm25_scores": [
       5.217,
@@ -2072,18 +1665,12 @@
       1.4621,
       1.4553,
       1.3512,
-      0.9085,
-      0.0,
-      0.0,
-      0.0
+      0.9085
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "testing_labs",
       "qco_0",
-      "isi_mark",
-      "standards_search",
-      "qco_4",
       "certification_process_overview",
       "bis_licensing",
       "qco_3",
@@ -2091,11 +1678,8 @@
     ],
     "rerank_scores": [
       0.4855,
-      0.2538,
-      0.2382,
-      0.18,
-      0.1751,
-      0.1699,
+      0.0232,
+      0.0176,
       0.0113,
       0.0113,
       0.0106,
@@ -2509,21 +2093,6 @@
         "verification_status": "BIS LIMS"
       },
       {
-        "name": "Kailtech Test and Research Centre Pvt. Ltd., Indore8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-        "lab_code": "8125636IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)All21000View breakup-18 Dec, 2027--",
-        "address": "",
-        "city": "2027--",
-        "state": "",
-        "standard": "IS 1786 (2008)",
-        "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
-        "scope": "All",
-        "testing_charges": "21000 View breakup -",
-        "validity_date": "18 Dec, 2027",
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
-        "verification_status": "BIS LIMS"
-      },
-      {
         "name": "MICRO, SMALL & MEDIUM ENTERPRISES - TESTING CENTRE (MSME), KOLKATA5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
         "lab_code": "5108204IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)Fe 415, Fe 415D, Fe 415S; Fe 500, Fe 500D, Fe 500S;23213View breakup----",
         "address": "",
@@ -2552,14 +2121,29 @@
         "source": "Bureau of Indian Standards",
         "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
         "verification_status": "BIS LIMS"
+      },
+      {
+        "name": "S.B.Steels Company, Bally5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+        "lab_code": "5120906IS 1786 (2008)High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)-38750.00View breakup-06 Sep, 2027--",
+        "address": "",
+        "city": "2027--",
+        "state": "",
+        "standard": "IS 1786 (2008)",
+        "product": "High strength deformed steel bars and wires for concretere inforcement - Specification (Fourth Revision)",
+        "scope": "-",
+        "testing_charges": "38750.00 View breakup -",
+        "validity_date": "06 Sep, 2027",
+        "source": "Bureau of Indian Standards",
+        "source_url": "https://lims.bis.gov.in/home/search_is_number/?is_number__doc_no=1786",
+        "verification_status": "BIS LIMS"
       }
     ],
     "sources": []
   },
   {
     "query": "Which QCO applies to TMT reinforcement bars?",
-    "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "intent": "QCO_QUERY",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -2584,37 +2168,28 @@
       "IS_1786_2008",
       "qco_overview",
       "qco_0",
-      "qco_4",
-      "qco_1",
       "qco_2",
-      "qco_3"
+      "qco_4",
+      "qco_3",
+      "qco_1"
     ],
     "rerank_scores": [
-      0.3868,
-      0.3694,
-      0.2871,
-      0.2597,
-      0.2493,
+      0.3838,
+      0.3621,
+      0.0264,
       0.0095,
-      0.009
+      0.0095,
+      0.009,
+      0.0087
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -2642,10 +2217,7 @@
       "qco_overview",
       "qco_2",
       "qco_1",
-      "qco_4",
-      "bis_care",
-      "IS_1786_2008",
-      "testing_labs"
+      "qco_4"
     ],
     "bm25_scores": [
       4.7965,
@@ -2657,17 +2229,11 @@
       1.9023,
       1.4119,
       1.3888,
-      1.3868,
-      0.0,
-      0.0,
-      0.0
+      1.3868
     ],
     "reranked_candidates": [
       "bis_certification",
-      "IS_1786_2008",
       "bis_product_certification",
-      "bis_care",
-      "testing_labs",
       "bis_what_is",
       "certification_process_overview",
       "qco_0",
@@ -2678,11 +2244,8 @@
       "qco_4"
     ],
     "rerank_scores": [
-      0.3899,
-      0.3105,
-      0.288,
-      0.2173,
-      0.2028,
+      0.3828,
+      0.038,
       0.0259,
       0.0246,
       0.0245,
@@ -2714,9 +2277,9 @@
   {
     "query": "What standard should I use for steel bars used to reinforce concrete?",
     "intent": "standard_recommendation",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "No sufficiently supported BIS standard was found for this product in the current knowledge base.\n\nTry describing the product in more detail.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
       "qco_0",
       "hallmarking",
@@ -2724,9 +2287,7 @@
       "qco_2",
       "qco_4",
       "qco_3",
-      "qco_1",
-      "IS_10500_2012",
-      "standards_search"
+      "qco_1"
     ],
     "bm25_scores": [
       9.8798,
@@ -2735,66 +2296,36 @@
       3.1977,
       1.3523,
       1.2704,
-      1.2116,
-      0.0,
-      0.0
+      1.2116
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "qco_4",
-      "IS_10500_2012",
-      "standards_search",
       "hallmarking",
       "qco_2",
+      "qco_4",
       "qco_3",
       "qco_1"
     ],
     "rerank_scores": [
-      0.3592,
-      0.2957,
-      0.2295,
-      0.1694,
-      0.1657,
+      0.0602,
+      0.0432,
       0.0216,
       0.0195,
+      0.0106,
       0.0101,
       0.0098
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
-        "document_type": "standard"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "IS 1786:2008"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "Which Indian Standard covers reinforcement steel used in concrete?",
     "intent": "standard_recommendation",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "No sufficiently supported BIS standard was found for this product in the current knowledge base.\n\nTry describing the product in more detail.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
       "qco_0",
       "hallmarking",
@@ -2822,59 +2353,35 @@
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
-      "isi_mark",
-      "standards_search",
-      "qco_3",
       "hallmarking",
+      "isi_mark",
+      "qco_3",
       "qco_2",
       "bis_certification",
+      "standards_search",
       "testing_labs",
       "bis_what_is"
     ],
     "rerank_scores": [
-      0.377,
-      0.3139,
-      0.2796,
-      0.2585,
-      0.2494,
+      0.1927,
+      0.0398,
       0.0275,
+      0.0203,
+      0.0148,
       0.0135,
       0.0128,
       0.0101,
+      0.0101,
       0.0098
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
-        "document_type": "standard"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "IS 1786:2008"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   },
   {
     "query": "Specification for high strength deformed steel used as concrete reinforcement",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
@@ -2882,50 +2389,37 @@
       "IS_1786_2008",
       "hallmarking",
       "IS_10500_2012",
-      "qco_2",
-      "qco_4"
+      "qco_2"
     ],
     "bm25_scores": [
       13.8168,
       6.7815,
       6.3305,
       4.039,
-      1.8454,
-      0.0
+      1.8454
     ],
     "reranked_candidates": [
       "IS_1786_2008",
       "qco_0",
       "IS_10500_2012",
       "hallmarking",
-      "qco_4",
       "qco_2"
     ],
     "rerank_scores": [
-      0.4888,
-      0.306,
-      0.2546,
-      0.2503,
-      0.175,
+      0.4288,
+      0.0467,
+      0.0323,
+      0.0279,
       0.0135
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -2940,54 +2434,33 @@
   {
     "query": "standard for TMT construction reinforcement",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "IS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
+    "e2e_answer": "Evidence was found, but the language-generation service is currently unavailable. Please review the cited BIS evidence below.\n\nIS 1786:2008 is identified in the available BIS evidence as covering high strength deformed steel bars and wires for concrete reinforcement.\n\nVerify current applicability and regulatory requirements before compliance action.",
     "confidence": 0.85,
     "needs_verification": false,
     "bm25_candidates": [
       "qco_0",
-      "IS_1786_2008",
-      "qco_4",
-      "IS_10500_2012",
-      "qco_3"
+      "IS_1786_2008"
     ],
     "bm25_scores": [
       1.8688,
-      0.9577,
-      0.0,
-      0.0,
-      0.0
+      0.9577
     ],
     "reranked_candidates": [
       "IS_1786_2008",
-      "qco_0",
-      "qco_4",
-      "IS_10500_2012",
-      "qco_3"
+      "qco_0"
     ],
     "rerank_scores": [
-      0.393,
-      0.254,
-      0.1855,
-      0.179,
-      0.178
+      0.378,
+      0.0136
     ],
     "grounding_passed": true,
     "evidence": [
       {
-        "standard_number": "IS 1786:2008",
-        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
-        "relevance": 0.85,
-        "retrieval_reason": "Matched based on product description keywords.",
-        "evidence": [
-          {
-            "text": "This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe 500D; c) Fe 550, Fe 550D; and d) Fe 600.",
-            "section": "1.1 Scope",
-            "source_url": "https://www.bis.gov.in/"
-          }
-        ],
+        "text": "{\"standard_code\": \"IS 1786:2008\", \"title\": \"High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)\", \"source\": \"Bureau of Indian Standards\", \"source_url\": \"https://www.bis.gov.in/\", \"document_type\": \"standard\", \"verification_status\": \"authoritative\", \"evidence\": [{\"text\": \"This standard covers the requirements of deformed steel bars and wires for use as reinforcement in concrete, in the following strength grades: a) Fe 415, Fe 415D; b) Fe 500, Fe...",
+        "document_title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement \u2014 Specification (Fourth Revision)",
         "source": "Bureau of Indian Standards",
         "source_url": "https://www.bis.gov.in/",
-        "verification_status": "unverified",
+        "verification_status": "authoritative",
         "document_type": "standard"
       }
     ],
@@ -3002,54 +2475,23 @@
   {
     "query": "standard for metal",
     "intent": "BIS_GENERAL_QUERY",
-    "e2e_answer": "Hallmarking is the accurate determination and official recording of the proportionate content of precious metal in precious metal articles. Hallmarks are thus official marks used in many countries as a guarantee of purity or fineness of precious metal articles.",
-    "confidence": 0.85,
-    "needs_verification": false,
+    "e2e_answer": "This question could not be answered reliably from the current knowledge base.",
+    "confidence": 0.0,
+    "needs_verification": true,
     "bm25_candidates": [
-      "hallmarking",
-      "IS_1786_2008",
-      "standards_search",
-      "qco_0",
-      "qco_4"
+      "hallmarking"
     ],
     "bm25_scores": [
-      5.1876,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      5.1876
     ],
     "reranked_candidates": [
-      "hallmarking",
-      "IS_1786_2008",
-      "standards_search",
-      "qco_0",
-      "qco_4"
+      "hallmarking"
     ],
     "rerank_scores": [
-      0.2698,
-      0.2155,
-      0.1894,
-      0.1879,
-      0.1878
+      0.0255
     ],
-    "grounding_passed": true,
-    "evidence": [
-      {
-        "text": "Hallmarking is the accurate determination and official recording of the proportionate content of precious metal in precious metal articles. Hallmarks are thus official marks used in many countries as a guarantee of purity or fineness of precious metal articles.",
-        "document_title": "Hallmarking",
-        "section": "Overview",
-        "source": "Bureau of Indian Standards",
-        "source_url": "https://www.bis.gov.in/",
-        "verification_status": "authoritative"
-      }
-    ],
-    "sources": [
-      {
-        "name": "Bureau of Indian Standards",
-        "url": "https://www.bis.gov.in/",
-        "document": "Hallmarking"
-      }
-    ]
+    "grounding_passed": false,
+    "evidence": [],
+    "sources": []
   }
 ]

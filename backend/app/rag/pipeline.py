@@ -8,8 +8,8 @@ from .grounding import check_grounding
 logger = logging.getLogger("rag_pipeline")
 logging.basicConfig(level=logging.INFO)
 
-def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY") -> Dict[str, Any]:
-    logger.info(f"Retrieval started for query: '{query}', intent: {intent}")
+def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY", language: str = "en") -> Dict[str, Any]:
+    logger.info(f"Retrieval started for query: '{query}', intent: {intent}, language: {language}")
     
     # 1. Retrieve candidates
     from .semantic_retrieval import retrieve_semantic_documents
@@ -100,6 +100,7 @@ def run_rag_pipeline(query: str, intent: str = "BIS_GENERAL_QUERY") -> Dict[str,
     packet = EvidencePacket(
         query=query,
         intent=intent,
+        language=language,
         evidence=[ev_item]
     )
 

@@ -114,10 +114,10 @@ def rerank(query: str, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]
         retrieval_agreement = 0.05 if (bm25_norm > 0 and semantic_score > 0) else 0.0
         
         # Calculate Bounded Final Score (Max 1.0)
-        # Weights: ID=0.45, Alias=0.10, Title=0.05, BM25=0.05, Semantic=0.30, Agreement=0.05
+        # Weights: ID=0.45, Alias=0.35, Title=0.05, BM25=0.05, Semantic=0.30, Agreement=0.05
         final_score = (
             (identifier_score * 0.45) +
-            (alias_score * 0.10) +
+            (alias_score * 0.35) +
             (title_score * 0.05) +
             (bm25_norm * 0.05) +
             (semantic_score * 0.30) +
